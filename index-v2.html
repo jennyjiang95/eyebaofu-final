@@ -25,11 +25,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 .corner.bl{bottom:12px;left:12px;transform:scaleY(-1)}.corner.br{bottom:12px;right:12px;transform:scale(-1,-1)}
 
 /* Nav */
-#nav{position:fixed;bottom:6px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;background:rgba(20,8,8,0.75);border:1px solid rgba(247,217,126,0.4);border-radius:18px;padding:3px 10px;z-index:100;font-family:-apple-system,sans-serif;font-size:10px;color:#f7d97e;backdrop-filter:blur(8px);opacity:0.1;transition:opacity 0.4s}
+#nav{position:fixed;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;background:rgba(20,8,8,0.8);border:1px solid rgba(247,217,126,0.4);border-radius:14px;padding:8px 5px;z-index:100;font-family:-apple-system,sans-serif;font-size:10px;color:#f7d97e;backdrop-filter:blur(8px);opacity:0.1;transition:opacity 0.4s}
 #nav:hover,#nav.visible{opacity:1}
-#nav button{background:transparent;border:none;color:#f7d97e;font-size:13px;cursor:pointer;padding:2px 5px;border-radius:8px;transition:background 0.2s}
+#nav button{background:transparent;border:none;color:#f7d97e;font-size:18px;cursor:pointer;padding:2px 5px;border-radius:8px;transition:background 0.2s;line-height:1}
 #nav button:hover{background:rgba(247,217,126,0.15)}
-#counter{font-variant-numeric:tabular-nums;min-width:38px;text-align:center;font-size:10px}
+#counter{font-variant-numeric:tabular-nums;text-align:center;font-size:9px}
+#dots{display:flex;flex-direction:column;gap:3px;align-items:center}
 .dot{width:5px;height:5px;border-radius:50%;background:rgba(247,217,126,0.3);cursor:pointer;transition:all 0.3s}
 .dot.active{background:#f7d97e;transform:scale(1.4)}.dot.past{background:rgba(247,217,126,0.6)}
 .hint{position:fixed;top:12px;right:60px;font-family:-apple-system,sans-serif;font-size:11px;color:rgba(247,217,126,0.55);z-index:100}
@@ -374,6 +375,33 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 .couplet-note.playing{animation:noteIn 0.5s ease-out 1.65s both}
 @keyframes noteIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
+/* === V3 COUPLET REDESIGN (S6-S9) === */
+.v3-wrap{width:100%;height:100%;background:linear-gradient(150deg,#6a0808 0%,#a81212 30%,#c81c1c 50%,#a81212 70%,#6a0808 100%);display:grid;grid-template-columns:25vw 1fr 25vw;position:relative;border:10px solid #c8941a;box-sizing:border-box;overflow:hidden}
+.v3-wrap::before{content:'';position:absolute;inset:6px;border:2px solid rgba(247,217,126,0.4);pointer-events:none;z-index:10}
+.v3-side{display:flex;gap:10px;padding:20px 12px;align-items:stretch}
+.v3-center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:14px 16px;z-index:1;position:relative}
+.v3-mentor-img{width:130px;height:130px;border-radius:50%;object-fit:cover;border:5px solid #f7d97e;box-shadow:0 0 32px rgba(247,217,126,0.65),0 0 0 2px rgba(247,217,126,0.3)}
+.v3-slide-title{font-size:1.65rem;color:rgba(247,217,126,0.78);font-weight:900;letter-spacing:0.35em;text-align:center}
+.v3-charm-name{font-size:clamp(3.2rem,5.8vw,5.5rem);font-weight:900;color:#f7d97e;text-shadow:4px 4px 0 rgba(50,2,2,0.9),0 0 32px rgba(247,217,126,0.55);letter-spacing:0.3em;text-align:center;line-height:1.15}
+.v3-badge{font-size:1.3rem;color:#f7d97e;background:rgba(0,0,0,0.4);border:2px solid rgba(247,217,126,0.55);border-radius:20px;padding:5px 18px;letter-spacing:0.1em}
+.v3-note{font-size:1.2rem;color:rgba(247,217,126,0.92);background:rgba(0,0,0,0.35);border:1px solid rgba(247,217,126,0.35);border-radius:8px;padding:7px 16px;text-align:center;letter-spacing:0.05em;opacity:0;transform:translateY(8px)}
+.v3-note.show{animation:fadeUp 0.5s ease 2.2s both}
+.v3-scroll{flex:1;background:linear-gradient(180deg,#300505 0%,#5e0b0b 8%,#b01212 38%,#901010 62%,#5e0b0b 92%,#300505 100%);border:4px solid #f7d97e;border-radius:10px;box-shadow:inset 0 0 20px rgba(0,0,0,0.45),0 4px 20px rgba(0,0,0,0.6),0 0 0 1px rgba(247,217,126,0.15);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;opacity:0;transform:scaleY(0);transform-origin:top center}
+.v3-scroll.open{animation:v2Open 0.6s cubic-bezier(0.34,1.2,0.64,1) both}
+.v3-scroll::before{content:'';position:absolute;top:0;left:4px;right:4px;height:40px;background:linear-gradient(180deg,rgba(247,217,126,0.2),transparent);pointer-events:none}
+.v3-scroll::after{content:'';position:absolute;bottom:0;left:4px;right:4px;height:40px;background:linear-gradient(0deg,rgba(247,217,126,0.2),transparent);pointer-events:none}
+.v3-scroll-inner{writing-mode:vertical-rl;text-orientation:upright;font-family:"STKaiti","KaiTi","Kaiti SC","楷体","STSong","宋体",serif;font-size:clamp(5rem,11vh,9.5rem);font-weight:900;color:#f7d97e;letter-spacing:0.2em;text-shadow:3px 3px 0 rgba(40,2,2,0.9),0 0 22px rgba(247,217,126,0.3);line-height:1}
+.v3-corner{position:absolute;width:72px;height:72px;z-index:11;pointer-events:none;color:#c8941a}
+.v3-tl{top:0;left:0}.v3-tr{top:0;right:0;transform:scaleX(-1)}.v3-bl{bottom:0;left:0;transform:scaleY(-1)}.v3-br{bottom:0;right:0;transform:scale(-1,-1)}
+.v3-deco{position:absolute;font-size:2rem;color:rgba(247,217,126,0.1);pointer-events:none;animation:drift 22s ease-in-out infinite alternate}
+
+/* === 6+6 Photo Grid (S4) === */
+.grid66-wrap{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:1fr 1fr;gap:8px;width:100%;flex:1;min-height:0;padding:4px 0}
+.grid66-item{position:relative;border-radius:8px;overflow:hidden;border:3px solid #a01818;box-shadow:0 2px 12px rgba(0,0,0,0.25);opacity:0;transform:translateY(24px)}
+.grid66-item.show{opacity:1;transform:translateY(0);transition:opacity 0.4s ease,transform 0.45s cubic-bezier(0.34,1.3,0.64,1)}
+.grid66-item img{width:100%;height:100%;object-fit:cover;display:block}
+.grid66-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(120,16,16,0.85);color:#f7d97e;font-size:0.68rem;text-align:center;padding:3px 4px;font-weight:700;letter-spacing:0.04em}
+
 /* === S11 ENHANCED === */
 #s11{background:radial-gradient(ellipse at 50% 40%,#1e0606 0%,#080101 100%)}
 .qr11-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:5;padding:18px 20px}
@@ -394,7 +422,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 </head>
 <body>
 
-<div class="hint">← → 翻页 · 空格前进 · F 全屏</div>
+<div class="hint">空格 / → 前进 · F 全屏</div>
 <button id="sfx-toggle" title="音效">🔊</button>
 <div id="flash-overlay"></div>
 <canvas id="confetti-canvas"></canvas>
@@ -569,7 +597,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
     <svg class="corner br" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <div class="title-cn" style="font-size:2.4rem;margin-bottom:2px">十 二 场 · 求 道 修 行</div>
     <div class="divider"><span>· 9 个月 · 12 次聚 · 思想碰撞 ·</span></div>
-    <div class="mosaic-wrap" id="mosaic-wrap">
+    <div class="grid66-wrap" id="mosaic-wrap">
       <!-- JS filled -->
     </div>
   </div>
@@ -617,20 +645,29 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 
 <!-- ===== S6: 第一道符 · 财富生产力 (培基) ===== -->
 <section class="slide" id="s6">
-  <div class="v2-wrap">
-    <div class="v2-top">
-      <img class="v2-mentor-img" src="assets/mentors/培基.png" alt="培基道长">
-      <div class="v2-hengpi">财 富 生 产 力</div>
-      <div class="v2-badge">🔔 培基道长 授符</div>
+  <div class="v3-wrap">
+    <svg class="v3-corner v3-tl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-tr" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-bl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-br" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <span class="v3-deco" style="top:18%;left:26%;animation-delay:1s">☁</span>
+    <span class="v3-deco" style="top:68%;left:27%;animation-delay:4s">☁</span>
+    <span class="v3-deco" style="top:22%;right:26%;animation-delay:2.5s">☁</span>
+    <span class="v3-deco" style="top:72%;right:26%;animation-delay:6s">☁</span>
+    <div class="v3-side" id="v3sr6-L">
+      <div class="v3-scroll"><div class="v3-scroll-inner">看不懂不下注</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">没时间买大盘</div></div>
     </div>
-    <div class="v2-scrolls" id="v2sr6">
-      <div class="v2-scroll"><div class="v2-scroll-inner">看不懂不下注</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">没时间买大盘</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">真看懂小仓试</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">活得久等复利</div></div>
+    <div class="v3-center">
+      <img class="v3-mentor-img" src="assets/mentors/培基.png" alt="培基道长">
+      <div class="v3-slide-title">第 一 道 符</div>
+      <div class="v3-charm-name">财 富<br>生 产 力</div>
+      <div class="v3-badge">🔔 培基道长 授符</div>
+      <div class="v3-note" id="cn6">不懂装懂，才是破财的开始</div>
     </div>
-    <div class="v2-bottom">
-      <div class="v2-note" id="cn6">不懂装懂，才是破财的开始</div>
+    <div class="v3-side" id="v3sr6-R">
+      <div class="v3-scroll"><div class="v3-scroll-inner">真看懂小仓试</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">活得久等复利</div></div>
     </div>
   </div>
   <div class="gold-glow"></div>
@@ -638,20 +675,29 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 
 <!-- ===== S7: 第二道符 · AI 黑领 (夏淳) ===== -->
 <section class="slide" id="s7">
-  <div class="v2-wrap">
-    <div class="v2-top">
-      <img class="v2-mentor-img" src="assets/mentors/夏淳.png" alt="夏淳道长">
-      <div class="v2-hengpi">AI 黑 领</div>
-      <div class="v2-badge">🔔 夏淳道长 授符</div>
+  <div class="v3-wrap">
+    <svg class="v3-corner v3-tl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-tr" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-bl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-br" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <span class="v3-deco" style="top:18%;left:26%;animation-delay:1.5s">☁</span>
+    <span class="v3-deco" style="top:68%;left:27%;animation-delay:5s">☁</span>
+    <span class="v3-deco" style="top:22%;right:26%;animation-delay:3s">☁</span>
+    <span class="v3-deco" style="top:72%;right:26%;animation-delay:7s">☁</span>
+    <div class="v3-side" id="v3sr7-L">
+      <div class="v3-scroll"><div class="v3-scroll-inner">别做白领提效</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">职能压缩梦靥</div></div>
     </div>
-    <div class="v2-scrolls" id="v2sr7">
-      <div class="v2-scroll"><div class="v2-scroll-inner">别做白领提效</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">职能压缩梦靥</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">要做黑领设限</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">人拍板守红线</div></div>
+    <div class="v3-center">
+      <img class="v3-mentor-img" src="assets/mentors/夏淳.png" alt="夏淳道长">
+      <div class="v3-slide-title">第 二 道 符</div>
+      <div class="v3-charm-name">AI<br>黑 领</div>
+      <div class="v3-badge">🔔 夏淳道长 授符</div>
+      <div class="v3-note" id="cn7">别做提效白领 · 要做设限黑领</div>
     </div>
-    <div class="v2-bottom">
-      <div class="v2-note" id="cn7">别做提效白领 · 要做设限黑领</div>
+    <div class="v3-side" id="v3sr7-R">
+      <div class="v3-scroll"><div class="v3-scroll-inner">要做黑领设限</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">人拍板守红线</div></div>
     </div>
   </div>
   <div class="gold-glow"></div>
@@ -659,20 +705,29 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 
 <!-- ===== S8: 第三道符 · 信任协作 (胜华) ===== -->
 <section class="slide" id="s8">
-  <div class="v2-wrap">
-    <div class="v2-top">
-      <img class="v2-mentor-img" src="assets/mentors/胜华.png" alt="胜华道长">
-      <div class="v2-hengpi">信 任 协 作</div>
-      <div class="v2-badge">🔔 胜华道长 授符</div>
+  <div class="v3-wrap">
+    <svg class="v3-corner v3-tl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-tr" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-bl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-br" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <span class="v3-deco" style="top:15%;left:26%;animation-delay:0.5s">☁</span>
+    <span class="v3-deco" style="top:70%;left:27%;animation-delay:4.5s">☁</span>
+    <span class="v3-deco" style="top:20%;right:26%;animation-delay:2s">☁</span>
+    <span class="v3-deco" style="top:68%;right:26%;animation-delay:6.5s">☁</span>
+    <div class="v3-side" id="v3sr8-L">
+      <div class="v3-scroll"><div class="v3-scroll-inner">平时存信任</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">对方视角谈</div></div>
     </div>
-    <div class="v2-scrolls" id="v2sr8">
-      <div class="v2-scroll"><div class="v2-scroll-inner">平时存信任</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">对方视角谈</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">风险备方案</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">缺人我补上</div></div>
+    <div class="v3-center">
+      <img class="v3-mentor-img" src="assets/mentors/胜华.png" alt="胜华道长">
+      <div class="v3-slide-title">第 三 道 符</div>
+      <div class="v3-charm-name">信 任<br>协 作</div>
+      <div class="v3-badge">🔔 胜华道长 授符</div>
+      <div class="v3-note" id="cn8">信任存够了，路才推得开</div>
     </div>
-    <div class="v2-bottom">
-      <div class="v2-note" id="cn8">信任存够了，路才推得开</div>
+    <div class="v3-side" id="v3sr8-R">
+      <div class="v3-scroll"><div class="v3-scroll-inner">风险备方案</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">缺人我补上</div></div>
     </div>
   </div>
   <div class="gold-glow"></div>
@@ -680,20 +735,29 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 
 <!-- ===== S9: 第四道符 · 高维判断 (Yvonne) ===== -->
 <section class="slide" id="s9">
-  <div class="v2-wrap">
-    <div class="v2-top">
-      <img class="v2-mentor-img" src="assets/mentors/Yvonne.png" alt="Yvonne道长">
-      <div class="v2-hengpi">高 维 判 断</div>
-      <div class="v2-badge">🔔 Yvonne 道长 授符</div>
+  <div class="v3-wrap">
+    <svg class="v3-corner v3-tl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-tr" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-bl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <svg class="v3-corner v3-br" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.8"/><circle cx="14" cy="14" r="5" fill="currentColor"/></svg>
+    <span class="v3-deco" style="top:16%;left:26%;animation-delay:2s">☁</span>
+    <span class="v3-deco" style="top:66%;left:27%;animation-delay:5.5s">☁</span>
+    <span class="v3-deco" style="top:24%;right:26%;animation-delay:3.5s">☁</span>
+    <span class="v3-deco" style="top:74%;right:26%;animation-delay:7.5s">☁</span>
+    <div class="v3-side" id="v3sr9-L">
+      <div class="v3-scroll"><div class="v3-scroll-inner">先定北极星</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">再问谁在乎</div></div>
     </div>
-    <div class="v2-scrolls" id="v2sr9">
-      <div class="v2-scroll"><div class="v2-scroll-inner">先定北极星</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">再问谁在乎</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">最坏能承受</div></div>
-      <div class="v2-scroll"><div class="v2-scroll-inner">结果换地盘</div></div>
+    <div class="v3-center">
+      <img class="v3-mentor-img" src="assets/mentors/Yvonne.png" alt="Yvonne道长">
+      <div class="v3-slide-title">第 四 道 符</div>
+      <div class="v3-charm-name">高 维<br>判 断</div>
+      <div class="v3-badge">🔔 Yvonne 道长 授符</div>
+      <div class="v3-note" id="cn9">不靠喊累，靠 Deliver · 不是更努力，是看更远</div>
     </div>
-    <div class="v2-bottom">
-      <div class="v2-note" id="cn9">不靠喊累，靠 Deliver · 不是更努力，是看更远</div>
+    <div class="v3-side" id="v3sr9-R">
+      <div class="v3-scroll"><div class="v3-scroll-inner">最坏能承受</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">结果换地盘</div></div>
     </div>
   </div>
   <div class="gold-glow"></div>
@@ -1098,25 +1162,19 @@ teamMembers.forEach((m,i)=>{
   grid.appendChild(wrap);
 });
 
-// ===== SLIDE 4: Build mosaic =====
+// ===== SLIDE 4: Build 6+6 photo grid =====
 const themes = [
   '拓同路 · 利他合作','广结善缘 · 聚贵人','把握大势 · 预先机',
   '禅修心境 · 事从容','大展宏图 · 心想事成','深度分享 · 真知灼见',
   '线下夜话 · 兄弟情深','AI浪潮 · 求护城河','职场破局 · 求晋升路',
   '投资认知 · 求复利','组织视角 · 求高维','信任协作 · 求Support'
 ];
-const photoSizes = [[128,100],[114,94],[143,110],[120,97],[138,107],[116,94],[133,104],[138,107],[128,100],[143,110],[123,97],[130,102]];
-const photoRots = [-3,5,-6,2,-4,7,-2,4,-5,3,-4,6];
 const photoExts = ['png','png','png','png','png','png','png','jpeg','jpeg','jpeg','jpeg','jpeg'];
 const mosaic = document.getElementById('mosaic-wrap');
 for(let i=0;i<12;i++){
-  const [w,h] = photoSizes[i];
-  const rot = photoRots[i];
-  const dx = i%2===0 ? '-50vw' : '50vw';
   const div = document.createElement('div');
-  div.className = 'polaroid';
-  div.style.cssText = `--fr:${rot}deg;--sx:${dx};width:${w}px;height:${h+26}px;animation-delay:${i*120}ms`;
-  div.innerHTML = `<div class="washi"></div><img src="assets/activities/a${i+1}.${photoExts[i]}" alt="${themes[i]}" style="width:${w}px;height:${h}px"><div class="polaroid-caption">${themes[i]}</div>`;
+  div.className = 'grid66-item';
+  div.innerHTML = `<img src="assets/activities/a${i+1}.${photoExts[i]}" alt="${themes[i]}"><div class="grid66-caption">${themes[i]}</div>`;
   mosaic.appendChild(div);
 }
 
@@ -1185,6 +1243,24 @@ function setupCharInk(lineEl, baseDelay) {
 }
 
 // ===== COUPLET ANIMATION =====
+function playV3Couplet(slideId) {
+  const slide = document.getElementById(slideId);
+  const idx = slideId.replace('s','');
+  const note = document.getElementById('cn'+idx);
+  if(!slide) return;
+  const scrolls = slide.querySelectorAll('.v3-scroll');
+  scrolls.forEach(s => { s.classList.remove('open'); void s.offsetWidth; });
+  if(note){ note.classList.remove('show'); void note.offsetWidth; }
+  sfx.bell();
+  // Left 2 then right 2, staggered
+  scrolls.forEach((s, i) => {
+    setTimeout(() => { s.classList.add('open'); sfx.woodfish(); }, 280 + i * 200);
+  });
+  setTimeout(() => { if(note) note.classList.add('show'); sfx.bell(); }, 280 + scrolls.length * 200 + 200);
+  const glow = slide.querySelector('.gold-glow');
+  if(glow){ glow.classList.add('on'); setTimeout(()=>glow.classList.remove('on'),1600); }
+}
+
 function playV2Couplet(slideId) {
   const idx = slideId.replace('s','');
   const wrap = document.getElementById('v2sr'+idx);
@@ -1315,10 +1391,10 @@ function onSlideEnter(i){
     });
   } else if(i===4){
     sfx.drum();
-    const items=document.querySelectorAll('.polaroid,.text-tile');
+    const items=document.querySelectorAll('.grid66-item');
     items.forEach((el,idx)=>{
-      el.classList.remove('landed'); void el.offsetWidth;
-      setTimeout(()=>{ el.classList.add('landed'); if(idx<7) sfx.woodfish(); },idx*140+200);
+      el.classList.remove('show');
+      setTimeout(()=>{ el.classList.add('show'); sfx.woodfish(); },idx*80+200);
     });
   } else if(i===5){
     sfx.wave();
@@ -1334,7 +1410,7 @@ function onSlideEnter(i){
       setTimeout(()=>{ cat.style.transform=''; setTimeout(()=>{ cat.style.transition=''; },350); },550);
     },4200);
   } else if(i>=6&&i<=9){
-    playV2Couplet('s'+i);
+    playV3Couplet('s'+i);
   } else if(i===10){
     // 1. White flash
     const fl=document.getElementById('flash-overlay');
