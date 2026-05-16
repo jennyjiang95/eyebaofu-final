@@ -94,12 +94,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 
 /* ===== SLIDE 2: 11只猫 ===== */
 .s2-title-row{display:flex;flex-direction:column;align-items:center;gap:2px;margin-bottom:10px}
-.cat-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:1320px}
+.cat-grid{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:1320px}
+.cat-grid-row{display:flex;gap:14px;justify-content:center}
 .cat-frame-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;width:130px;opacity:0;transform:translateY(-60px)}
 .cat-frame-wrap.drop{animation:catDrop 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
 @keyframes catDrop{0%{opacity:0;transform:translateY(-80px) rotate(var(--ir,0deg))}80%{transform:translateY(4px) rotate(0)}100%{opacity:1;transform:translateY(0) rotate(0)}}
 .cat-frame{position:relative;width:110px;height:110px;margin:0 auto;overflow:visible}
-.cat-frame img{width:110px;height:110px;border-radius:10px;object-fit:cover;object-position:top;border:3px solid var(--fc,#4a2c1a);box-shadow:0 4px 16px rgba(0,0,0,0.3);display:block}
+.cat-frame img:not(.cat-ear-img){width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:top;border:none;box-shadow:0 4px 16px rgba(0,0,0,0.3);display:block}
 .cat-ear{position:absolute;top:-16px;z-index:2}
 .cat-ear.left{left:10px}.cat-ear.right{right:10px}
 .cat-whiskers{display:flex;gap:6px;justify-content:center;margin-top:3px}
@@ -117,8 +118,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 .bagua-ring{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:155px;height:155px;z-index:2;animation:spinBagua 30s linear infinite}
 @keyframes spinBagua{from{transform:translateX(-50%) rotate(0deg)}to{transform:translateX(-50%) rotate(360deg)}}
 .mentor-photo{position:absolute;top:23px;left:50%;transform:translateX(-50%);width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #f7d97e;z-index:3;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
-.mentor-ribbon{background:linear-gradient(90deg,#8a0e0e,#c01818,#8a0e0e);color:#f7d97e;font-size:1.5rem;font-weight:900;letter-spacing:0.12em;padding:6px 20px;border-radius:4px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
-.mentor-title-small{font-size:0.9rem;color:#4a1d10;text-align:center;font-weight:600;max-width:170px;line-height:1.4}
+.mentor-ribbon{background:linear-gradient(90deg,#8a0e0e,#c01818,#8a0e0e);color:#f7d97e;font-size:2rem;font-weight:900;letter-spacing:0.12em;padding:8px 24px;border-radius:4px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.mentor-title-small{font-size:1.1rem;color:#4a1d10;text-align:center;font-weight:600;max-width:200px;line-height:1.4}
 .cloud-bg{position:absolute;opacity:0.14;pointer-events:none;color:#c8941a;animation:drift 30s ease-in-out infinite alternate}
 @keyframes drift{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
 
@@ -252,8 +253,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 @keyframes bowLeft{0%,100%{transform:rotate(0)}50%{transform:rotate(-10deg)}}
 @keyframes bowRight{0%,100%{transform:rotate(0)}50%{transform:rotate(10deg)}}
 /* Real cat images */
-.cat-real-img{width:190px;height:190px;object-fit:cover;object-position:top;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.35)}
-.cat-real-img-sm{width:130px;height:130px;object-fit:cover;object-position:top;border-radius:10px;box-shadow:0 3px 16px rgba(0,0,0,0.3)}
+.cat-real-img{width:200px;height:200px;object-fit:contain;border-radius:0;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3))}
+.cat-real-img-sm{width:140px;height:140px;object-fit:contain;border-radius:0;filter:drop-shadow(0 3px 10px rgba(0,0,0,0.25))}
 /* Summit combined cats on S10 */
 /* Summit climbing cats — left & right mountain paths */
 .summit-climbing-cat{position:absolute;width:72px;height:72px;object-fit:cover;object-position:top;border-radius:50%;border:3px solid #f7d97e;box-shadow:0 0 18px rgba(247,217,126,0.65),0 3px 14px rgba(0,0,0,0.55);z-index:5;opacity:0}
@@ -555,7 +556,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
   margin-top:14px;opacity:0;
 }
 .s0-cats-row.show{animation:fadeUp 0.7s ease both}
-.s0-cat-img{width:160px;height:140px;object-fit:cover;object-position:top;border-radius:12px;box-shadow:0 4px 18px rgba(100,40,10,0.25)}
+.s0-cat-img{width:520px;max-width:48vw;height:auto;object-fit:contain;border-radius:0;filter:drop-shadow(0 6px 20px rgba(80,30,5,0.3))}
 
 /* Cloud SVG decorations for parchment slides */
 .p3-cloud{position:absolute;pointer-events:none;opacity:0.12;color:#a01818}
@@ -594,20 +595,73 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 
 /* === CAT EAR ILLUSTRATED IMAGE (S2) === */
 .cat-ear-img{
-  position:absolute;top:-82px;left:50%;transform:translateX(-50%);
-  width:108px;height:auto;
+  position:absolute;top:-54px;left:50%;transform:translateX(-50%);
+  width:66px;height:auto;
   object-fit:contain;
   z-index:3;
   pointer-events:none;
+  border:none !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
 }
 /* extra padding-top on wrap so ears don't clip */
-.cat-frame-wrap{padding-top:82px}
+.cat-frame-wrap{padding-top:54px}
+
+/* =====================================================
+   SLIDE BACKGROUND IMAGES
+   Images already contain the red-frame border + decorations.
+   Parchment div becomes a transparent layout shell.
+   ===================================================== */
+
+/* Slide backgrounds — each image carries its own frame */
+#s0  { background: url('assets/backgrounds/bg_plain.jpeg')   center/cover no-repeat !important; overflow:hidden; }
+#s1  { background: url('assets/backgrounds/bg_ingots.jpeg')  center/cover no-repeat; }
+#s2  { background: url('assets/backgrounds/bg_cat.jpeg')     center/cover no-repeat; }
+#s3  { background: url('assets/backgrounds/bg_cloud.jpeg')   center/cover no-repeat; }
+#s4  { background: url('assets/backgrounds/bg_plain.jpeg')   center/cover no-repeat; }
+#s5  { background: url('assets/backgrounds/bg_cat.jpeg')     center/cover no-repeat; }
+#s11 { background: url('assets/backgrounds/bg_cloud.jpeg')   center/cover no-repeat !important; }
+
+/* For couplet slides S6-S9 the image goes behind the v3-wrap */
+#s6, #s7, #s8, #s9 { background: url('assets/backgrounds/bg_ingots.jpeg') center/cover no-repeat; }
+#s6 .v3-wrap, #s7 .v3-wrap, #s8 .v3-wrap, #s9 .v3-wrap {
+  background: transparent;
+}
+
+/* Parchment shell: image already provides the visual frame.
+   Keep the div purely for layout (padding/flex) — remove double border. */
+#s1 .parchment,#s2 .parchment,#s3 .parchment,
+#s4 .parchment,#s5 .parchment,#s11 .parchment {
+  background: rgba(248,235,195,0.18); /* ultra-light warm tint for readability */
+  border: none;
+  box-shadow: none;
+}
+
+/* Hide CSS corner SVGs — image already has corner fretwork */
+#s1 .corner,#s2 .corner,#s3 .corner,
+#s4 .corner,#s5 .corner,#s11 .corner { display:none; }
+
+/* S3 mentor slide: push content toward top */
+#s3 .parchment { justify-content: flex-start; padding-top: 28px; }
+
+/* V3 couplet wrap: keep gold outer border but transparent centre bg */
+#s6 .v3-wrap,#s7 .v3-wrap,#s8 .v3-wrap,#s9 .v3-wrap {
+  border-color: rgba(200,148,26,0.7);
+}
+#s6 .v3-center,#s7 .v3-center,#s8 .v3-center,#s9 .v3-center {
+  background: rgba(248,235,195,0.35);
+  border-radius: 4px;
+}
+
+/* Parchment global cloud layer: hide on image-background slides */
+#s1 ~ #parchment-clouds,
+#s2 ~ #parchment-clouds { display:none; }
 </style>
 </head>
 <body>
 
 <div class="hint">空格 / → 前进 · F 全屏</div>
-<button id="sfx-toggle" title="音效">🔊</button>
+<button id="sfx-toggle" title="音效">🔇</button>
 <div id="flash-overlay"></div>
 <canvas id="confetti-canvas"></canvas>
 <div id="stage-sweep"></div>
@@ -746,7 +800,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 
     <!-- Two cats at bottom -->
     <div class="s0-cats-row" id="oc-cats">
-      <img class="s0-cat-img" src="assets/cats/both.jpeg" alt="两只招财猫" style="mix-blend-mode:multiply"/>
+      <img class="s0-cat-img" src="assets/cats/both.png" alt="两只招财猫"/>
     </div>
 
     <!-- Event small text -->
@@ -778,7 +832,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
     <svg class="corner bl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <svg class="corner br" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <div class="s2-title-row">
-      <div class="title-cn" style="font-size:2.6rem">十 一 喵 · E 往 无 前</div>
+      <div class="title-cn" style="font-size:3.4rem">十 一 喵 · E 往 无 前</div>
       <div class="divider"><span>· 10 只想富招财猫 · 5 位 IC · 5 位管理 ·</span></div>
       <div style="font-size:0.8rem;color:#a01818;font-weight:700;letter-spacing:0.08em;margin-bottom:4px">1 Director · 4 Manager · 2 TLM · 3 IC</div>
     </div>
@@ -798,7 +852,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
     <!-- Clouds -->
     <svg class="cloud-bg" style="top:10%;left:5%;width:120px" viewBox="0 0 120 60"><ellipse cx="60" cy="40" rx="50" ry="20" fill="currentColor"/><ellipse cx="40" cy="35" rx="30" ry="18" fill="currentColor"/><ellipse cx="80" cy="30" rx="30" ry="18" fill="currentColor"/></svg>
     <svg class="cloud-bg" style="top:15%;right:5%;width:100px;animation-delay:-10s" viewBox="0 0 120 60"><ellipse cx="60" cy="40" rx="50" ry="20" fill="currentColor"/><ellipse cx="40" cy="35" rx="30" ry="18" fill="currentColor"/><ellipse cx="80" cy="30" rx="30" ry="18" fill="currentColor"/></svg>
-    <div class="title-cn" style="font-size:2.8rem;margin-bottom:4px">四 位 仙 师 · 道 法 加 持</div>
+    <div class="title-cn" style="font-size:3.4rem;margin-bottom:4px">四 位 仙 师 · 道 法 加 持</div>
     <div class="divider"><span>· E代名师 · 传道授业 ·</span></div>
     <div class="mentors-row" id="mentors-row">
       <!-- mentor 1: 培基道长 -->
@@ -934,7 +988,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
           <svg class="wave-svg w3" viewBox="0 0 1200 55" preserveAspectRatio="none"><path d="M0,40 Q150,18 300,40 Q450,55 600,40 Q750,18 900,40 Q1050,55 1200,40 L1200,55 L0,55 Z" fill="rgba(44,109,181,0.15)"/></svg>
         </div>
         <span class="token-flame">🔥</span>
-        <img id="cat-token-s5" src="assets/cats/token.jpeg" alt="Token猫" class="cat-real-img cat-float">
+        <img id="cat-token-s5" src="assets/cats/token.png" alt="Token猫" class="cat-real-img cat-float">
         <h3>Token 猫 · 智能浪潮猫</h3>
         <p>AI 浪潮拍过来，我只看到 Token 在烧，护城河都消失掉<br/>沉浮在算法通杀海啸，我是在驾驭浪潮？<br/>还是在被 AI 浪潮吞掉？</p>
       </div>
@@ -947,7 +1001,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
             <rect x="2" y="65" width="41" height="10" rx="3" fill="#777" stroke="#444" stroke-width="1.5"/>
           </svg>
         </div>
-        <img id="cat-title-s5" src="assets/cats/title.jpeg" alt="Title猫" class="cat-real-img cat-float">
+        <img id="cat-title-s5" src="assets/cats/title.png" alt="Title猫" class="cat-real-img cat-float">
         <h3>Title 猫 · 职场破局猫</h3>
         <p>我曾以为勤奋就能开天辟地和高效<br/>可拼尽全力后，项目依然原地打转让我恼<br/>我是开荒破局的人，还是被局势清场？</p>
       </div>
@@ -1112,8 +1166,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
   <div id="climbing-cats" style="position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden"></div>
 
   <!-- Two cats climbing from mountain base to summit -->
-  <img id="summit-cat-token" class="summit-climbing-cat" src="assets/cats/token.jpeg" alt="Token猫">
-  <img id="summit-cat-title" class="summit-climbing-cat" src="assets/cats/title.jpeg" alt="Title猫">
+  <img id="summit-cat-token" class="summit-climbing-cat" src="assets/cats/token.png" alt="Token猫">
+  <img id="summit-cat-title" class="summit-climbing-cat" src="assets/cats/title.png" alt="Title猫">
 
   <!-- Mentor watchers at top -->
   <div class="mentor-watcher-row" id="mentor-watchers" style="opacity:0;transition:opacity 0.6s">
@@ -1187,7 +1241,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
       <div class="qr11-main-row">
         <!-- Left cat (Token) -->
         <div class="qr11-side-cats" id="qr11-cat-l">
-          <img class="qr11-side-cat-img cat-bow-l" src="assets/cats/token.jpeg" alt="Token猫">
+          <img class="qr11-side-cat-img cat-bow-l" src="assets/cats/token.png" alt="Token猫">
           <div style="font-size:0.85rem;color:#8a0e0e;font-weight:700;letter-spacing:0.08em">Token 猫</div>
         </div>
 
@@ -1203,7 +1257,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 
         <!-- Right cat (Title) -->
         <div class="qr11-side-cats" id="qr11-cat-r">
-          <img class="qr11-side-cat-img cat-bow-r" src="assets/cats/title.jpeg" alt="Title猫">
+          <img class="qr11-side-cat-img cat-bow-r" src="assets/cats/title.png" alt="Title猫">
           <div style="font-size:0.85rem;color:#8a0e0e;font-weight:700;letter-spacing:0.08em">Title 猫</div>
         </div>
       </div>
@@ -1233,7 +1287,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 <script>
 // ===== SOUND ENGINE =====
 class SoundEngine {
-  constructor() { this.ctx = null; this.master = null; this.muted = false; }
+  constructor() { this.ctx = null; this.master = null; this.muted = true; }
   init() {
     if (this.ctx) return;
     this.ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -1470,6 +1524,8 @@ const teamMembers = [
 ];
 const rots = [-4,6,-5,3,-3,7,-2,4,-6,2,-4];
 const grid = document.getElementById('cat-grid');
+const row1 = document.createElement('div'); row1.className = 'cat-grid-row';
+const row2 = document.createElement('div'); row2.className = 'cat-grid-row';
 teamMembers.forEach((m,i)=>{
   const wrap = document.createElement('div');
   wrap.className = 'cat-frame-wrap';
@@ -1477,14 +1533,16 @@ teamMembers.forEach((m,i)=>{
   wrap.innerHTML = `
     <div class="cat-frame" style="--fc:${m.fc}">
       <img class="cat-ear-img" src="assets/cats/ear_${i}.png" alt="">
-      <img src="assets/team/${m.img}" alt="${m.name}" style="border-color:${m.fc}">
+      <img src="assets/team/${m.img}" alt="${m.name}">
     </div>
     <div class="cat-whiskers" style="--fc:${m.fc}"><span></span><span></span><span></span><span></span></div>
     <div class="cat-name">${m.name}<br/><span style="font-size:0.7rem;color:#6b2a10">${m.en}</span></div>
     <div class="cat-role" style="background:${m.fc}">${m.role}</div>
   `;
-  grid.appendChild(wrap);
+  (i < 6 ? row1 : row2).appendChild(wrap);
 });
+grid.appendChild(row1);
+grid.appendChild(row2);
 
 // ===== SLIDE 4: Build 6+6 photo grid =====
 const themes = [
