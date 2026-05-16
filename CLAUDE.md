@@ -477,3 +477,14 @@ Build a chooser landing page for the GitHub Pages site.
    - v1 = original horizontal slide deck
    - v2 = full-screen vertical scroll couplet layout
 6. Suggest the user preview locally by opening `index.html`, then commit with a clear message and push to `origin/main` so GitHub Pages updates.
+
+---
+
+## Follow-up task (handed off from CVS Code)
+
+Add a third option to the chooser landing page (`index.html`):
+
+1. Add a **v3** button/card linking to `index-v3.html`, matching the style of the existing v1 and v2 cards.
+2. Skim `index-v3.html` to write an accurate short label describing what v3 is.
+3. Make sure the layout still looks balanced with three cards instead of two (adjust grid/spacing as needed, keep it responsive).
+4. Commit with a clear message and push to `origin/main`.
