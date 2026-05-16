@@ -237,6 +237,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 .cat-bow-r{animation:bowRight 2s ease-in-out infinite}
 @keyframes bowLeft{0%,100%{transform:rotate(0)}50%{transform:rotate(-10deg)}}
 @keyframes bowRight{0%,100%{transform:rotate(0)}50%{transform:rotate(10deg)}}
+/* Real cat images */
+.cat-real-img{width:190px;height:190px;object-fit:cover;object-position:top;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.35)}
+.cat-real-img-sm{width:130px;height:130px;object-fit:cover;object-position:top;border-radius:10px;box-shadow:0 3px 16px rgba(0,0,0,0.3)}
+/* Summit combined cats on S10 */
+.summit-cats{position:absolute;bottom:68px;left:50%;transform:translateX(-50%);height:180px;z-index:3;border-radius:10px;box-shadow:0 4px 24px rgba(0,0,0,0.4);opacity:0;transition:opacity 1s ease 0.8s}
+.summit-cats.show{opacity:1}
 
 /* === MENTOR TOP (couplet slides) === */
 .mentor-top{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:6px}
@@ -621,7 +627,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
           <svg class="wave-svg w3" viewBox="0 0 1200 55" preserveAspectRatio="none"><path d="M0,40 Q150,18 300,40 Q450,55 600,40 Q750,18 900,40 Q1050,55 1200,40 L1200,55 L0,55 Z" fill="rgba(44,109,181,0.15)"/></svg>
         </div>
         <span class="token-flame">🔥</span>
-        <svg id="cat-token-s5" class="cat-svg cat-float" width="160" height="160" viewBox="0 0 240 240"></svg>
+        <img id="cat-token-s5" src="assets/cats/token.jpeg" alt="Token猫" class="cat-real-img cat-float">
         <h3>Token 猫 · 智能浪潮猫</h3>
         <p>AI 浪潮拍过来，我只看到 Token 在烧，护城河都消失掉<br/>沉浮在算法通杀海啸，我是在驾驭浪潮？<br/>还是在被 AI 浪潮吞掉？</p>
       </div>
@@ -634,7 +640,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
             <rect x="2" y="65" width="41" height="10" rx="3" fill="#777" stroke="#444" stroke-width="1.5"/>
           </svg>
         </div>
-        <svg id="cat-title-s5" class="cat-svg cat-work" width="160" height="160" viewBox="0 0 240 240"></svg>
+        <img id="cat-title-s5" src="assets/cats/title.jpeg" alt="Title猫" class="cat-real-img cat-float">
         <h3>Title 猫 · 职场破局猫</h3>
         <p>我曾以为勤奋就能开天辟地和高效<br/>可拼尽全力后，项目依然原地打转让我恼<br/>我是开荒破局的人，还是被局势清场？</p>
       </div>
@@ -797,6 +803,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 
   <!-- Climbing cats container -->
   <div id="climbing-cats" style="position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden"></div>
+  <!-- Both cats at summit -->
+  <img id="summit-cats" src="assets/cats/both.jpeg" alt="两只招财猫" class="summit-cats">
 
   <!-- Mentor watchers at top -->
   <div class="mentor-watcher-row" id="mentor-watchers" style="opacity:0;transition:opacity 0.6s">
@@ -859,7 +867,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
     </div>
     <div class="qr11-main-row">
       <div class="qr11-side-cat" id="qr11-cat-l">
-        <svg class="cat-svg cat-float" width="130" height="130" viewBox="0 0 240 240" id="cat-s11-l"></svg>
+        <img id="cat-s11-l" src="assets/cats/token.jpeg" alt="Token猫" class="cat-real-img-sm cat-float">
       </div>
       <div class="qr11-ring">
         <div class="qr11-pulse-ring"></div>
@@ -870,7 +878,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
         </div>
       </div>
       <div class="qr11-side-cat" id="qr11-cat-r">
-        <svg class="cat-svg cat-float" width="130" height="130" viewBox="0 0 240 240" id="cat-s11-r"></svg>
+        <img id="cat-s11-r" src="assets/cats/title.jpeg" alt="Title猫" class="cat-real-img-sm cat-float">
       </div>
     </div>
     <div class="qr11-sub" id="qr11-sub">
@@ -1114,14 +1122,7 @@ function makeCat(scheme) {
   }
 }
 
-// Draw static cats
-['cat-token-s5','cat-s6','cat-s7'].forEach(id=>{
-  const el=document.getElementById(id); if(el) el.innerHTML=makeCat('token');
-});
-['cat-title-s5','cat-s8','cat-s9'].forEach(id=>{
-  const el=document.getElementById(id); if(el) el.innerHTML=makeCat('title');
-});
-// (cat-final-l/r removed — climbing cats generated dynamically in spawnClimbingCats)
+// Static cats are now real <img> elements — no SVG drawing needed
 
 // ===== SLIDE 2: Build cat grid =====
 const teamMembers = [
@@ -1435,6 +1436,9 @@ function onSlideEnter(i){
     sfx.levelup();
     // 4. Spawn climbing cats
     spawnClimbingCats();
+    // 4b. Summit cats appear
+    const sc=document.getElementById('summit-cats');
+    if(sc){ sc.classList.remove('show'); setTimeout(()=>sc.classList.add('show'),900); }
     // 5. Mentor watchers
     const mw=document.getElementById('mentor-watchers');
     if(mw){ mw.style.opacity='0'; setTimeout(()=>{ mw.style.opacity='1'; sfx.bell(); },700); }
@@ -1472,11 +1476,6 @@ function onSlideEnter(i){
     if(lb){ lb.onclick=()=>{ sfx.drum(); fireLaunch(); }; }
   } else if(i===11){
     sfx.bell();
-    // Draw cats
-    const cl=document.getElementById('cat-s11-l');
-    const cr=document.getElementById('cat-s11-r');
-    if(cl) cl.innerHTML=makeCat('token');
-    if(cr) cr.innerHTML=makeCat('title');
     spawnS11Sparkles();
     const h=document.getElementById('qr11-headline');
     const qw=document.getElementById('qr11-img-wrap');
@@ -1561,10 +1560,10 @@ function spawnClimbingCats(){
     const div=document.createElement('div');
     div.className='climbing-cat-anim';
     div.style.cssText=`--sx:${cfg.sx}px;--ex:${cfg.ex}px;--sz:${cfg.sz};--dur:${cfg.dur}s;--dly:${cfg.dly}s;bottom:0;left:50%;`;
-    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-    svg.setAttribute('width','60'); svg.setAttribute('height','60'); svg.setAttribute('viewBox','0 0 240 240');
-    svg.innerHTML=makeCat(schemes[idx]);
-    div.appendChild(svg);
+    const img=document.createElement('img');
+    img.src=`assets/cats/${schemes[idx]==='token'?'token':'title'}.jpeg`;
+    img.style.cssText='width:60px;height:60px;object-fit:cover;object-position:top;border-radius:8px;display:block';
+    div.appendChild(img);
     container.appendChild(div);
   });
 }
