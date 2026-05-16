@@ -89,8 +89,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 .cat-ear.left{left:10px}.cat-ear.right{right:10px}
 .cat-whiskers{display:flex;gap:6px;justify-content:center;margin-top:3px}
 .cat-whiskers span{display:block;height:1px;width:18px;background:var(--fc,#4a2c1a);opacity:0.5}
-.cat-name{font-size:0.8rem;color:#4a1d10;font-weight:700;text-align:center;line-height:1.3}
-.cat-role{font-size:0.65rem;padding:2px 7px;border-radius:8px;font-weight:700;background:var(--fc,#4a2c1a);color:#f4e4bc;margin-top:2px}
+.cat-name{font-size:1rem;color:#4a1d10;font-weight:700;text-align:center;line-height:1.3}
+.cat-role{font-size:0.8rem;padding:2px 8px;border-radius:8px;font-weight:700;background:var(--fc,#4a2c1a);color:#f4e4bc;margin-top:2px}
 
 /* ===== SLIDE 3: 四位道长 ===== */
 .mentors-row{display:flex;gap:60px;align-items:flex-start;justify-content:center;margin-top:8px}
@@ -102,8 +102,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 .bagua-ring{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:155px;height:155px;z-index:2;animation:spinBagua 30s linear infinite}
 @keyframes spinBagua{from{transform:translateX(-50%) rotate(0deg)}to{transform:translateX(-50%) rotate(360deg)}}
 .mentor-photo{position:absolute;top:23px;left:50%;transform:translateX(-50%);width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #f7d97e;z-index:3;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
-.mentor-ribbon{background:linear-gradient(90deg,#8a0e0e,#c01818,#8a0e0e);color:#f7d97e;font-size:1.2rem;font-weight:900;letter-spacing:0.12em;padding:5px 18px;border-radius:4px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
-.mentor-title-small{font-size:0.72rem;color:#4a1d10;text-align:center;font-weight:600;max-width:160px;line-height:1.4}
+.mentor-ribbon{background:linear-gradient(90deg,#8a0e0e,#c01818,#8a0e0e);color:#f7d97e;font-size:1.5rem;font-weight:900;letter-spacing:0.12em;padding:6px 20px;border-radius:4px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.mentor-title-small{font-size:0.9rem;color:#4a1d10;text-align:center;font-weight:600;max-width:170px;line-height:1.4}
 .cloud-bg{position:absolute;opacity:0.14;pointer-events:none;color:#c8941a;animation:drift 30s ease-in-out infinite alternate}
 @keyframes drift{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
 
@@ -125,10 +125,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 .p1-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;width:100%;max-width:1380px;margin-top:8px}
 .p1-card{background:rgba(255,250,230,0.8);border:3px solid #a01818;border-radius:12px;padding:18px 22px;box-shadow:inset 0 0 0 2px #f7d97e,0 4px 20px rgba(120,40,10,0.2);display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden}
 .p1-card.blue{border-color:#2c6db5}.p1-card.red{border-color:#d04020}
-.p1-card h3{font-size:1.5rem;font-weight:900;margin:8px 0 5px;letter-spacing:0.1em}
+.p1-card h3{font-size:1.8rem;font-weight:900;margin:8px 0 6px;letter-spacing:0.1em}
 .p1-card.blue h3{color:#1e4f88}.p1-card.red h3{color:#a01818}
-.p1-card p{font-size:1rem;line-height:1.6;color:#4a2818;text-align:center;font-weight:500}
-.p1-tagline{margin-top:16px;font-size:1.8rem;color:#a01818;font-weight:900;letter-spacing:0.3em;border-top:2px solid #a01818;border-bottom:2px solid #a01818;padding:5px 32px}
+.p1-card p{font-size:1.15rem;line-height:1.65;color:#4a2818;text-align:center;font-weight:500}
+.p1-tagline{margin-top:16px;font-size:2.1rem;color:#a01818;font-weight:900;letter-spacing:0.3em;border-top:2px solid #a01818;border-bottom:2px solid #a01818;padding:6px 32px}
 .wave-layer{position:absolute;bottom:0;left:0;right:0;height:55px;overflow:hidden;pointer-events:none}
 .wave-svg{position:absolute;bottom:0;width:200%;animation:waveScroll 9s linear infinite}
 .wave-svg.w2{animation-duration:13s;opacity:0.6;animation-direction:reverse}
@@ -146,11 +146,11 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 /* ===== SLIDES 6-9: 符场对联 ===== */
 .charm-stage-v2{display:grid;grid-template-columns:300px 1fr;gap:20px;width:100%;max-width:1440px;align-items:center}
 .cat-side-v2{display:flex;flex-direction:column;align-items:center;gap:10px}
-.cat-quote-v2{background:rgba(255,250,230,0.9);border:2px solid #a01818;border-radius:12px;padding:10px 16px;font-size:0.95rem;color:#4a1d10;max-width:290px;line-height:1.6;font-weight:600;position:relative}
+.cat-quote-v2{background:rgba(255,250,230,0.9);border:2px solid #a01818;border-radius:12px;padding:12px 18px;font-size:1.1rem;color:#4a1d10;max-width:300px;line-height:1.65;font-weight:600;position:relative}
 .cat-quote-v2::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);border:10px solid transparent;border-top-color:#a01818}
-.cat-label-v2{font-size:1.1rem;color:#a01818;font-weight:900;letter-spacing:0.1em}
+.cat-label-v2{font-size:1.3rem;color:#a01818;font-weight:900;letter-spacing:0.1em}
 .charm-right{display:flex;flex-direction:column;align-items:center;gap:6px}
-.mentor-badge{font-size:1.1rem;color:#a01818;font-weight:900;letter-spacing:0.12em;background:rgba(247,217,126,0.5);border:2px solid #a01818;border-radius:18px;padding:4px 16px}
+.mentor-badge{font-size:1.35rem;color:#a01818;font-weight:900;letter-spacing:0.12em;background:rgba(247,217,126,0.5);border:2px solid #a01818;border-radius:18px;padding:5px 18px}
 
 /* Scroll animation */
 .scroll-wrap{background:linear-gradient(180deg,#fae8b0 0%,#f0d488 100%);border:5px solid #a01818;border-radius:8px;box-shadow:inset 0 0 0 2px #f7d97e,inset 0 0 0 4px #a01818,0 6px 24px rgba(0,0,0,0.35);transform-origin:top center;transform:scaleY(0);opacity:0;position:relative;max-width:780px;width:100%}
@@ -259,27 +259,27 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 .s10-wcol.b{background:rgba(44,109,181,0.3);border:2px solid rgba(100,160,230,0.7)}
 .s10-wcol.r{background:rgba(160,24,24,0.3);border:2px solid rgba(200,60,60,0.7)}
 .s10-wcol.show{animation:fadeUp 0.5s ease both}
-.s10-wcol h4{font-size:1.4rem;color:#f7d97e;font-weight:900;margin-bottom:4px}
-.s10-wcol p{font-size:1rem;color:rgba(247,217,126,0.9);font-weight:600;line-height:1.5}
-.s10-impact{background:rgba(0,0,0,0.45);border:1px solid rgba(247,217,126,0.45);border-radius:10px;padding:6px 22px;font-size:1.1rem;color:#f7d97e;font-weight:700;letter-spacing:0.04em;position:relative;z-index:10}
-.s10-finale{font-size:2.7rem;font-weight:900;letter-spacing:0.22em;text-align:center;line-height:1.2;color:#f7d97e;text-shadow:3px 3px 0 #a01818,0 0 30px rgba(247,217,126,0.5);opacity:0;transform:translateY(20px);position:relative;z-index:10}
+.s10-wcol h4{font-size:1.7rem;color:#f7d97e;font-weight:900;margin-bottom:4px}
+.s10-wcol p{font-size:1.2rem;color:rgba(247,217,126,0.9);font-weight:600;line-height:1.5}
+.s10-impact{background:rgba(0,0,0,0.45);border:1px solid rgba(247,217,126,0.45);border-radius:10px;padding:7px 24px;font-size:1.35rem;color:#f7d97e;font-weight:700;letter-spacing:0.04em;position:relative;z-index:10}
+.s10-finale{font-size:3.2rem;font-weight:900;letter-spacing:0.22em;text-align:center;line-height:1.2;color:#f7d97e;text-shadow:3px 3px 0 #a01818,0 0 30px rgba(247,217,126,0.5);opacity:0;transform:translateY(20px);position:relative;z-index:10}
 .s10-finale.show{animation:fadeUp 0.8s ease both}
 
 /* === SLIDE 11: QR 投票 === */
 #s11{background:radial-gradient(circle at center,#1a0202,#050101)}
 .qr11-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;position:relative;z-index:5;padding:20px}
-.qr11-headline{font-size:1.9rem;color:#f7d97e;font-weight:900;text-align:center;line-height:1.55;text-shadow:0 0 18px rgba(247,217,126,0.4);opacity:0}
+.qr11-headline{font-size:2.3rem;color:#f7d97e;font-weight:900;text-align:center;line-height:1.55;text-shadow:0 0 18px rgba(247,217,126,0.4);opacity:0}
 .qr11-headline.show{animation:fadeUp 0.6s ease both}
 .qr11-img-wrap{width:300px;height:300px;border:6px solid #f7d97e;border-radius:10px;box-shadow:0 0 50px rgba(247,217,126,0.55),0 0 100px rgba(247,217,126,0.2);background:#fff;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0.5)}
 .qr11-img-wrap.show{animation:qrBurst 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.3s both,qrWiggle11 3s ease-in-out 2.5s infinite}
 .qr11-img-wrap img{width:100%;height:100%;border-radius:6px}
 @keyframes qrBurst{from{opacity:0;transform:scale(0.5)}to{opacity:1;transform:scale(1)}}
 @keyframes qrWiggle11{0%,80%,100%{transform:scale(1) rotate(0)}84%{transform:scale(1) rotate(-3deg)}88%{transform:scale(1) rotate(3deg)}92%{transform:scale(1) rotate(-2deg)}96%{transform:scale(1) rotate(1deg)}}
-.qr11-sub{font-size:1.2rem;color:rgba(247,217,126,0.85);text-align:center;font-weight:600;line-height:1.6;opacity:0}
+.qr11-sub{font-size:1.45rem;color:rgba(247,217,126,0.85);text-align:center;font-weight:600;line-height:1.6;opacity:0}
 .qr11-sub.show{animation:fadeUp 0.5s ease 0.8s both}
-.qr11-vote{font-size:1.5rem;color:#c8941a;font-weight:900;letter-spacing:0.1em;border:2px solid #c8941a;padding:7px 26px;border-radius:22px;opacity:0;box-shadow:0 0 14px rgba(200,148,26,0.4)}
+.qr11-vote{font-size:1.8rem;color:#c8941a;font-weight:900;letter-spacing:0.1em;border:2px solid #c8941a;padding:8px 28px;border-radius:22px;opacity:0;box-shadow:0 0 14px rgba(200,148,26,0.4)}
 .qr11-vote.show{animation:fadeUp 0.5s ease 1.2s both}
-.qr11-finale{font-size:2.8rem;font-weight:900;letter-spacing:0.15em;text-align:center;line-height:1.3;color:#a01818;text-shadow:3px 3px 0 #f7d97e,0 0 24px rgba(160,24,24,0.5);opacity:0;transform:scale(0.7)}
+.qr11-finale{font-size:3.2rem;font-weight:900;letter-spacing:0.15em;text-align:center;line-height:1.3;color:#a01818;text-shadow:3px 3px 0 #f7d97e,0 0 24px rgba(160,24,24,0.5);opacity:0;transform:scale(0.7)}
 .qr11-finale.show{animation:finaleIn11 0.8s cubic-bezier(0.34,1.56,0.64,1) 2s both}
 @keyframes finaleIn11{from{opacity:0;transform:scale(0.6)}to{opacity:1;transform:scale(1)}}
 
@@ -346,10 +346,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 .couplet-line.r.playing{animation:lineSlideIn 0.5s ease-out 1.05s both}
 .couplet-line.l.playing{animation:lineSlideIn 0.5s ease-out 1.3s both}
 @keyframes lineSlideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
-.cl-label{font-size:0.78rem;color:#a01818;font-weight:700;background:rgba(160,24,24,0.1);border:1px solid rgba(160,24,24,0.3);padding:3px 9px;border-radius:10px;white-space:nowrap;min-width:44px;text-align:center}
-.cl-text{font-size:1.65rem;color:#4a1d10;font-weight:900;letter-spacing:0.18em}
-.couplet-deco{font-size:1.6rem;color:#c8941a;opacity:0.6}
-.couplet-note{font-size:0.92rem;color:#a01818;font-weight:700;padding:10px 20px;border-top:1px dashed rgba(160,24,24,0.5);width:100%;text-align:center;opacity:0;transform:translateY(8px)}
+.cl-label{font-size:0.92rem;color:#a01818;font-weight:700;background:rgba(160,24,24,0.1);border:1px solid rgba(160,24,24,0.3);padding:4px 11px;border-radius:10px;white-space:nowrap;min-width:50px;text-align:center}
+.cl-text{font-size:2rem;color:#4a1d10;font-weight:900;letter-spacing:0.15em}
+.couplet-deco{font-size:2rem;color:#c8941a;opacity:0.6}
+.couplet-note{font-size:1.1rem;color:#a01818;font-weight:700;padding:10px 20px;border-top:1px dashed rgba(160,24,24,0.5);width:100%;text-align:center;opacity:0;transform:translateY(8px)}
 .couplet-note.playing{animation:noteIn 0.5s ease-out 1.65s both}
 @keyframes noteIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
@@ -620,11 +620,11 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
           <div class="couplet-body">
             <div class="couplet-line r" id="cl6-r">
               <span class="cl-label">上联</span>
-              <span class="cl-text">看不懂不下注 · 没时间买大盘</span>
+              <span class="cl-text">看不懂不下注 · 没时间大盘股</span>
             </div>
             <div class="couplet-line l" id="cl6-l">
               <span class="cl-label">下联</span>
-              <span class="cl-text">真看懂小仓试 · 活得久等复利</span>
+              <span class="cl-text">真看懂小仓试 · 活得久复利胜</span>
             </div>
             <div class="couplet-deco">☯</div>
             <div class="couplet-note" id="cn6">不懂装懂，才是破财的开始</div>
@@ -662,14 +662,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
           <div class="couplet-body">
             <div class="couplet-line r" id="cl7-r">
               <span class="cl-label">上联</span>
-              <span class="cl-text">先识压缩 · 先定权限</span>
+              <span class="cl-text">别做白领只提效 · 职能压缩是梦靥</span>
             </div>
             <div class="couplet-line l" id="cl7-l">
               <span class="cl-label">下联</span>
-              <span class="cl-text">先设红线 · 留人拍板</span>
+              <span class="cl-text">要做黑领清楚设限 · AI触红线人拍板</span>
             </div>
             <div class="couplet-deco">⚡</div>
-            <div class="couplet-note" id="cn7">AI 是工具，不是余生 · 别做提效白领，要做设限黑领</div>
+            <div class="couplet-note" id="cn7">别做提效白领 · 要做设限黑领</div>
           </div>
         </div>
       </div>
@@ -704,11 +704,11 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
           <div class="couplet-body">
             <div class="couplet-line r" id="cl8-r">
               <span class="cl-label">上联</span>
-              <span class="cl-text">私下存信任 · 翻译成对方目标</span>
+              <span class="cl-text">平时联系存信任 · 对方视角谈目标</span>
             </div>
             <div class="couplet-line l" id="cl8-l">
               <span class="cl-label">下联</span>
-              <span class="cl-text">风险带方案上桌 · gap我来补</span>
+              <span class="cl-text">风险方案齐准备 · 缺人找我都补上</span>
             </div>
             <div class="couplet-deco">✦</div>
             <div class="couplet-note" id="cn8">信任存够了，路才推得开</div>
@@ -746,11 +746,11 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
           <div class="couplet-body">
             <div class="couplet-line r" id="cl9-r">
               <span class="cl-label">上联</span>
-              <span class="cl-text">先问我要什么 · 再问谁在乎</span>
+              <span class="cl-text">先定北极星 · 再问老板在乎啥</span>
             </div>
             <div class="couplet-line l" id="cl9-l">
               <span class="cl-label">下联</span>
-              <span class="cl-text">三思做选择 · 结果换 scope</span>
+              <span class="cl-text">最坏能承受住 · 抢地盘摆结果论</span>
             </div>
             <div class="couplet-deco">★</div>
             <div class="couplet-note" id="cn9">不靠喊累，靠 Deliver · 不是更努力，是看更远</div>
@@ -839,7 +839,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#1a0505;font-family:
 
   <!-- 点火 launch bar -->
   <div class="launch-bar-wrap">
-    <div class="launch-btn">🚀 E 夜 点 火</div>
+    <div class="launch-btn" id="launch-btn" style="cursor:pointer">🚀 E 夜 点 火</div>
     <div class="launch-track">
       <div class="launch-fill" id="launch-fill">
         <span class="launch-label">100% · 富得不止一夜！</span>
@@ -1168,27 +1168,26 @@ const themes = [
   '线下夜话 · 兄弟情深','AI浪潮 · 求护城河','职场破局 · 求晋升路',
   '投资认知 · 求复利','组织视角 · 求高维','信任协作 · 求Support'
 ];
-const photoSizes = [[140,110],[120,100],[160,120],[130,105],[150,115],[125,100],[145,110]];
-const photoRots = [-3,5,-6,2,-4,7,-2];
+const photoSizes = [[130,100],[115,95],[145,112],[122,98],[140,108],[118,95],[135,105],[140,108],[130,100],[145,112],[125,98]];
+const photoRots = [-3,5,-6,2,-4,7,-2,4,-5,3,-4];
+const photoExts = ['png','png','png','png','png','png','png','jpeg','jpeg','jpeg','jpeg'];
 const mosaic = document.getElementById('mosaic-wrap');
-for(let i=0;i<7;i++){
+for(let i=0;i<11;i++){
   const [w,h] = photoSizes[i];
   const rot = photoRots[i];
   const dx = i%2===0 ? '-50vw' : '50vw';
   const div = document.createElement('div');
   div.className = 'polaroid';
-  div.style.cssText = `--fr:${rot}deg;--sx:${dx};width:${w}px;height:${h+26}px;animation-delay:${i*150}ms`;
-  div.innerHTML = `<div class="washi"></div><img src="assets/activities/a${i+1}.png" alt="${themes[i]}" style="width:${w}px;height:${h}px"><div class="polaroid-caption">${themes[i]}</div>`;
+  div.style.cssText = `--fr:${rot}deg;--sx:${dx};width:${w}px;height:${h+26}px;animation-delay:${i*130}ms`;
+  div.innerHTML = `<div class="washi"></div><img src="assets/activities/a${i+1}.${photoExts[i]}" alt="${themes[i]}" style="width:${w}px;height:${h}px"><div class="polaroid-caption">${themes[i]}</div>`;
   mosaic.appendChild(div);
 }
-for(let i=7;i<12;i++){
-  const rot = (i%2===0?-3:3);
-  const div = document.createElement('div');
-  div.className = 'text-tile';
-  div.style.cssText = `--fr:${rot}deg;--sx:${i%2===0?'-50vw':'50vw'};animation-delay:${i*120}ms`;
-  div.textContent = themes[i];
-  mosaic.appendChild(div);
-}
+// 12th slot: text tile
+const lastDiv = document.createElement('div');
+lastDiv.className = 'text-tile';
+lastDiv.style.cssText = `--fr:-3deg;--sx:-50vw;animation-delay:1430ms`;
+lastDiv.textContent = themes[11];
+mosaic.appendChild(lastDiv);
 
 // ===== CONFETTI CANVAS =====
 function fireConfetti() {
@@ -1424,9 +1423,17 @@ function onSlideEnter(i){
     }
     // 9. Confetti + bell burst
     setTimeout(()=>{ sfx.sfxConfetti(); fireConfetti(); sfx.bell(); },2600);
-    // 10. Launch bar
-    const lf=document.getElementById('launch-fill');
-    if(lf){ lf.classList.remove('fired'); void lf.offsetWidth; setTimeout(()=>lf.classList.add('fired'),1900); }
+    // 10. Launch bar (auto-fire + re-triggerable)
+    function fireLaunch(){
+      const lf=document.getElementById('launch-fill');
+      if(!lf) return;
+      lf.classList.remove('fired'); void lf.offsetWidth;
+      setTimeout(()=>lf.classList.add('fired'),100);
+      setTimeout(()=>{ sfx.sfxLevelup(); fireConfetti(); },3000);
+    }
+    fireLaunch();
+    const lb=document.getElementById('launch-btn');
+    if(lb){ lb.onclick=()=>{ sfx.drum(); fireLaunch(); }; }
   } else if(i===11){
     sfx.bell();
     // Draw cats
