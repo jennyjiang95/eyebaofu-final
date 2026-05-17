@@ -1888,12 +1888,83 @@ function onSlideEnter(i){
     // 9. Confetti
     setTimeout(()=>{ fireConfetti(); },2600);
     // 10. Launch bar (auto-fire + re-triggerable)
+    function launchRocketOrbit(){
+      const W=window.innerWidth, H=window.innerHeight, m=55;
+      // Clockwise path starting from launch bar (bottom-right area)
+      const path=[
+        [W*0.82, H-m],
+        [W-m,    H-m],
+        [W-m,    m  ],
+        [W*0.5,  m  ],
+        [m,      m  ],
+        [m,      H*0.5],
+        [m,      H-m],
+        [W*0.5,  H-m],
+        [W*0.82, H-m],
+      ];
+      // Cumulative distances
+      const dists=[0];
+      for(let i=1;i<path.length;i++){
+        const dx=path[i][0]-path[i-1][0], dy=path[i][1]-path[i-1][1];
+        dists.push(dists[i-1]+Math.sqrt(dx*dx+dy*dy));
+      }
+      const total=dists[dists.length-1];
+      const duration=3200;
+      const rk=document.createElement('div');
+      rk.style.cssText='position:fixed;font-size:2.8rem;z-index:310;pointer-events:none;will-change:transform;';
+      rk.textContent='🚀';
+      document.body.appendChild(rk);
+      let prevX=path[0][0], prevY=path[0][1];
+      let lastExhaust=0;
+      const t0=performance.now();
+      function spawnTrail(cx,cy){
+        const emojis=['🔥','🔥','✨','💨'];
+        const p=document.createElement('div');
+        const sz=0.7+Math.random()*0.5;
+        p.style.cssText=`position:fixed;left:${cx}px;top:${cy}px;font-size:${sz}rem;pointer-events:none;z-index:309;transform:translate(-50%,-50%)`;
+        p.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+        document.body.appendChild(p);
+        const s=performance.now(), dur=350+Math.random()*200;
+        (function fade(ts){
+          const t=(ts-s)/dur;
+          if(t>=1){p.remove();return;}
+          p.style.opacity=(1-t).toFixed(2);
+          p.style.transform=`translate(-50%,-50%) scale(${(1-t*0.6).toFixed(2)})`;
+          requestAnimationFrame(fade);
+        })(performance.now());
+      }
+      function frame(now){
+        const elapsed=now-t0;
+        const prog=Math.min(elapsed/duration,1);
+        const td=prog*total;
+        let seg=0;
+        while(seg<dists.length-2&&dists[seg+1]<td) seg++;
+        const frac=(td-dists[seg])/(dists[seg+1]-dists[seg])||0;
+        const x=path[seg][0]+(path[seg+1][0]-path[seg][0])*frac;
+        const y=path[seg][1]+(path[seg+1][1]-path[seg][1])*frac;
+        const dx=x-prevX, dy=y-prevY;
+        // 🚀 native angle is ~-45deg (pointing upper-right); adjust
+        const angle=Math.atan2(dy,dx)*180/Math.PI+45;
+        rk.style.left=(x-20)+'px';
+        rk.style.top=(y-20)+'px';
+        rk.style.transform=`rotate(${angle}deg)`;
+        if(elapsed-lastExhaust>60){
+          spawnTrail(x,y);
+          lastExhaust=elapsed;
+        }
+        prevX=x; prevY=y;
+        if(prog<1) requestAnimationFrame(frame);
+        else rk.remove();
+      }
+      requestAnimationFrame(frame);
+    }
     function fireLaunch(){
       const lf=document.getElementById('launch-fill');
       if(!lf) return;
       lf.classList.remove('fired'); void lf.offsetWidth;
       setTimeout(()=>lf.classList.add('fired'),100);
       setTimeout(()=>{ fireConfetti(); },3000);
+      launchRocketOrbit();
     }
     fireLaunch();
     const lb=document.getElementById('launch-btn');
@@ -2019,7 +2090,7 @@ function showNav(){
 document.addEventListener('keydown',showNav);
 nav.addEventListener('mouseenter',showNav);
 document.addEventListener('click',e=>{
-  if(e.target.closest('#nav')||e.target.closest('button')||e.target.closest('#sfx-toggle')) return;
+  if(e.target.closest('#nav')||e.target.closest('button')||e.target.closest('#sfx-toggle')||e.target.closest('#launch-btn')||e.target.closest('.launch-bar-wrap')) return;
   goto(e.clientX>window.innerWidth/2 ? Math.min(cur+1,N-1) : Math.max(cur-1,0));
 });
 
