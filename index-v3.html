@@ -347,7 +347,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:24px 60px;overflow:hidden;gap:14px}
 .qr11-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:5;width:100%;height:100%}
-.qr11-headline{font-size:7.5rem;color:#8a0e0e;font-weight:900;text-align:center;line-height:1.3;text-shadow:2px 2px 0 rgba(200,148,26,0.4);opacity:0;letter-spacing:0.06em}
+.qr11-headline{font-size:5rem;color:#8a0e0e;font-weight:900;text-align:center;line-height:1.3;text-shadow:2px 2px 0 rgba(200,148,26,0.4);opacity:0;letter-spacing:0.06em;white-space:nowrap}
 .qr11-headline.show{animation:fadeUp 0.6s ease both}
 .qr11-main-row{display:flex;align-items:center;gap:40px;justify-content:center}
 .qr11-ring{position:relative;display:flex;align-items:center;justify-content:center}
@@ -363,8 +363,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 @keyframes qrBurst{from{opacity:0;transform:scale(0.5)}to{opacity:1;transform:scale(1)}}
 @keyframes qrWiggle11{0%,80%,100%{transform:scale(1) rotate(0)}84%{transform:scale(1) rotate(-3deg)}88%{transform:scale(1) rotate(3deg)}92%{transform:scale(1) rotate(-2deg)}96%{transform:scale(1) rotate(1deg)}}
 .qr11-side-cats{display:flex;flex-direction:column;gap:12px;align-items:center}
-.qr11-side-cat-img{width:120px;height:120px;object-fit:contain;border-radius:0;box-shadow:none;border:none;filter:drop-shadow(0 3px 10px rgba(0,0,0,0.3))}
-.qr11-sub{font-size:2.5rem;color:#5a1a0a;text-align:center;font-weight:600;line-height:1.6;opacity:0}
+.qr11-side-cat-img{width:auto;height:300px;object-fit:contain;border-radius:0;box-shadow:none;border:none;filter:drop-shadow(0 3px 10px rgba(0,0,0,0.3))}
+.qr11-sub{font-size:1.9rem;color:#5a1a0a;text-align:center;font-weight:600;line-height:1.6;opacity:0}
 .qr11-sub.show{animation:fadeUp 0.5s ease 0.8s both}
 .qr11-vote{font-size:5.1rem;color:#a01818;font-weight:900;letter-spacing:0.12em;
   border:3px solid #a01818;padding:10px 40px;border-radius:22px;opacity:0;
@@ -498,7 +498,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 /* === S11 ENHANCED === */
 
 .qr11-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:5;padding:18px 20px}
-.qr11-main-row{display:flex;align-items:center;gap:24px;justify-content:center}
+.qr11-main-row{display:flex;align-items:center;gap:12px;justify-content:center}
 .qr11-ring{position:relative;display:flex;align-items:center;justify-content:center}
 .qr11-pulse-ring{position:absolute;width:680px;height:680px;border-radius:50%;border:2px solid rgba(160,24,24,0.25);animation:qrPulseRing 2.2s ease-out infinite;pointer-events:none}
 .qr11-pulse-ring:nth-child(2){animation-delay:0.75s;border-color:rgba(200,148,26,0.25);width:720px;height:720px}
@@ -1667,12 +1667,11 @@ function playV3Couplet(slideId) {
   const scrolls = slide.querySelectorAll('.v3-scroll');
   scrolls.forEach(s => { s.classList.remove('open'); void s.offsetWidth; });
   if(note){ note.classList.remove('show'); void note.offsetWidth; }
-  sfx.bell();
   // Left 2 then right 2, staggered
   scrolls.forEach((s, i) => {
-    setTimeout(() => { s.classList.add('open'); sfx.woodfish(); }, 280 + i * 200);
+    setTimeout(() => { s.classList.add('open'); }, 280 + i * 200);
   });
-  setTimeout(() => { if(note) note.classList.add('show'); sfx.bell(); }, 280 + scrolls.length * 200 + 200);
+  setTimeout(() => { if(note) note.classList.add('show'); }, 280 + scrolls.length * 200 + 200);
   const glow = slide.querySelector('.gold-glow');
   if(glow){ glow.classList.add('on'); setTimeout(()=>glow.classList.remove('on'),1600); }
 }
@@ -1689,17 +1688,14 @@ function playV2Couplet(slideId) {
   scrolls.forEach(s => { s.classList.remove('open'); void s.offsetWidth; });
   if(note){ note.classList.remove('show'); void note.offsetWidth; }
 
-  sfx.bell();
   scrolls.forEach((s, i) => {
     setTimeout(() => {
       s.style.animationDelay = '0s';
       s.classList.add('open');
-      sfx.woodfish();
     }, 250 + i * 220);
   });
   setTimeout(() => {
     if(note) note.classList.add('show');
-    sfx.bell();
   }, 250 + scrolls.length * 220 + 100);
 
   const glow = slide ? slide.querySelector('.gold-glow') : null;
@@ -1725,12 +1721,11 @@ function playCouplet(slideId) {
     void el.offsetWidth;
   });
 
-  sfx.bell();
   if(sw){ sw.classList.add('playing'); }
-  setTimeout(()=>{ sfx.scroll(); if(hp) hp.classList.add('playing'); }, 900);
-  setTimeout(()=>{ sfx.woodfish(); if(clr) clr.classList.add('playing'); }, 1050);
-  setTimeout(()=>{ sfx.woodfish(); if(cll) cll.classList.add('playing'); }, 1300);
-  setTimeout(()=>{ if(cn) cn.classList.add('playing'); sfx.bell(); }, 1800);
+  setTimeout(()=>{ if(hp) hp.classList.add('playing'); }, 900);
+  setTimeout(()=>{ if(clr) clr.classList.add('playing'); }, 1050);
+  setTimeout(()=>{ if(cll) cll.classList.add('playing'); }, 1300);
+  setTimeout(()=>{ if(cn) cn.classList.add('playing'); }, 1800);
 
   const glow = slide.querySelector('.gold-glow');
   if(glow){ glow.classList.add('on'); setTimeout(()=>glow.classList.remove('on'),1500); }
@@ -1782,40 +1777,34 @@ function onSlideEnter(i){
       el.style.opacity='0';
       void el.offsetWidth;
     });
-    sfx.gong();
     setTimeout(()=>{ const b=document.getElementById('oc-banner'); if(b){ b.classList.add('show'); b.style.opacity=''; } },400);
-    setTimeout(()=>{ const t=document.getElementById('oc-sub'); if(t){ t.classList.add('show'); t.style.opacity=''; } sfx.bell(); },900);
+    setTimeout(()=>{ const t=document.getElementById('oc-sub'); if(t){ t.classList.add('show'); t.style.opacity=''; } },900);
     setTimeout(()=>{ const st=document.getElementById('oc-subtitle'); if(st){ st.style.transition='opacity 0.6s ease'; st.style.opacity='1'; } },1250);
     setTimeout(()=>{ const c=document.getElementById('oc-cats'); if(c){ c.classList.add('show'); c.style.opacity=''; } },1500);
   } else if(i===1){
-    sfx.drum();
+    // no sfx
   } else if(i===2){
-    sfx.swoosh();
     const cats=document.querySelectorAll('.cat-frame-wrap');
     cats.forEach((c,idx)=>{
       c.classList.remove('drop'); void c.offsetWidth;
       c.style.animationDelay=(idx*80)+'ms';
-      setTimeout(()=>{ c.classList.add('drop'); sfx.woodfish(); },idx*80+200);
+      setTimeout(()=>{ c.classList.add('drop'); },idx*80+200);
     });
   } else if(i===3){
     const portraits=document.querySelectorAll('.mentor-portrait');
     portraits.forEach((p,idx)=>{
       p.classList.remove('walk-in'); void p.offsetWidth;
       setTimeout(()=>{
-        sfx.swoosh();
         p.classList.add('walk-in');
-        setTimeout(()=>sfx.bell(), 420); // bell rings when hat lands
       },idx*280+80);
     });
   } else if(i===4){
-    sfx.drum();
     const items=document.querySelectorAll('.grid66-item');
     items.forEach((el,idx)=>{
       el.classList.remove('show');
-      setTimeout(()=>{ el.classList.add('show'); sfx.woodfish(); },idx*80+200);
+      setTimeout(()=>{ el.classList.add('show'); },idx*80+200);
     });
   } else if(i===5){
-    sfx.wave();
     // Wave attacks Token cat every 4s
     if(window._waveInterval) clearInterval(window._waveInterval);
     window._waveInterval = setInterval(()=>{
@@ -1824,7 +1813,6 @@ function onSlideEnter(i){
       if(!cat) return;
       cat.style.transition='transform 0.35s cubic-bezier(0.34,1.56,0.64,1)';
       cat.style.transform='translateX(-14px) rotate(-7deg) scale(0.93)';
-      sfx.wave();
       setTimeout(()=>{ cat.style.transform=''; setTimeout(()=>{ cat.style.transition=''; },350); },550);
     },4200);
   } else if(i>=6&&i<=9){
@@ -1850,7 +1838,6 @@ function onSlideEnter(i){
     burst.className='center-burst';
     document.body.appendChild(burst);
     setTimeout(()=>{ burst.classList.add('pop'); setTimeout(()=>burst.remove(),1000); },600);
-    sfx.levelup();
     // 4. Spawn climbing cats
     spawnClimbingCats();
     // 4b. Summit cats climb from base
@@ -1860,7 +1847,7 @@ function onSlideEnter(i){
     if(sctt){ sctt.classList.remove('climbing-title'); void sctt.offsetWidth; sctt.classList.add('climbing-title'); }
     // 5. Mentor watchers
     const mw=document.getElementById('mentor-watchers');
-    if(mw){ mw.style.opacity='0'; setTimeout(()=>{ mw.style.opacity='1'; sfx.bell(); },700); }
+    if(mw){ mw.style.opacity='0'; setTimeout(()=>{ mw.style.opacity='1'; },700); }
     // 6. Title reset
     const st=document.getElementById('s10-title');
     if(st){ st.style.animation='none'; void st.offsetWidth; st.style.animation=''; }
@@ -1880,21 +1867,20 @@ function onSlideEnter(i){
         });
       },2000);
     }
-    // 9. Confetti + bell burst
-    setTimeout(()=>{ sfx.sfxConfetti(); fireConfetti(); sfx.bell(); },2600);
+    // 9. Confetti
+    setTimeout(()=>{ fireConfetti(); },2600);
     // 10. Launch bar (auto-fire + re-triggerable)
     function fireLaunch(){
       const lf=document.getElementById('launch-fill');
       if(!lf) return;
       lf.classList.remove('fired'); void lf.offsetWidth;
       setTimeout(()=>lf.classList.add('fired'),100);
-      setTimeout(()=>{ sfx.sfxLevelup(); fireConfetti(); },3000);
+      setTimeout(()=>{ fireConfetti(); },3000);
     }
     fireLaunch();
     const lb=document.getElementById('launch-btn');
-    if(lb){ lb.onclick=()=>{ sfx.drum(); fireLaunch(); }; }
+    if(lb){ lb.onclick=()=>{ fireLaunch(); }; }
   } else if(i===11){
-    sfx.bell();
     spawnS11Sparkles();
     // Auto-play BGM
     const bgm=document.getElementById('bgm');
@@ -1907,9 +1893,9 @@ function onSlideEnter(i){
     const catr=document.getElementById('qr11-cat-r');
     [h,qw,sub,vt,catl,catr].forEach(el=>{ if(el){ el.classList.remove('show'); void el.offsetWidth; } });
     setTimeout(()=>{ if(h) h.classList.add('show'); },200);
-    setTimeout(()=>{ if(qw) qw.classList.add('show'); if(catl) catl.classList.add('show'); if(catr) catr.classList.add('show'); sfx.levelup(); },700);
+    setTimeout(()=>{ if(qw) qw.classList.add('show'); if(catl) catl.classList.add('show'); if(catr) catr.classList.add('show'); },700);
     setTimeout(()=>{ if(sub) sub.classList.add('show'); },1600);
-    setTimeout(()=>{ if(vt) vt.classList.add('show'); sfx.sfxConfetti(); fireConfetti(); },2100);
+    setTimeout(()=>{ if(vt) vt.classList.add('show'); fireConfetti(); },2100);
   }
 }
 
