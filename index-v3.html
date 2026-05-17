@@ -508,8 +508,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
   position:relative;z-index:5;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   width:100%;height:100%;
-  gap:0;
+  gap:10px;padding-bottom:260px;
 }
+#oc-subtitle{opacity:0}
 .s0-top-banner{
   background:linear-gradient(90deg,transparent,rgba(160,24,24,0.12) 20%,rgba(160,24,24,0.18) 50%,rgba(160,24,24,0.12) 80%,transparent);
   border-top:2px solid rgba(160,24,24,0.5);
@@ -552,11 +553,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 
 /* S0 cats at bottom */
 .s0-cats-row{
-  display:flex;align-items:flex-end;justify-content:center;gap:20px;
-  margin-top:14px;opacity:0;
+  display:flex;align-items:flex-end;justify-content:center;
+  position:absolute;bottom:0;left:0;right:0;
+  opacity:0;
 }
 .s0-cats-row.show{animation:fadeUp 0.7s ease both}
-.s0-cat-img{width:520px;max-width:48vw;height:auto;object-fit:contain;border-radius:0;filter:drop-shadow(0 6px 20px rgba(80,30,5,0.3))}
+.s0-cat-img{width:700px;max-width:68vw;height:auto;object-fit:contain;border-radius:0;filter:drop-shadow(0 6px 20px rgba(80,30,5,0.25))}
 
 /* Cloud SVG decorations for parchment slides */
 .p3-cloud{position:absolute;pointer-events:none;opacity:0.12;color:#a01818}
@@ -614,7 +616,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
    ===================================================== */
 
 /* Slide backgrounds — each image carries its own frame */
-#s0  { background: url('assets/backgrounds/bg_plain.jpeg')   center/cover no-repeat !important; overflow:hidden; }
+#s0  { background: url('assets/backgrounds/bg_s0.png') center/cover no-repeat !important; overflow:hidden; }
 #s1  { background: url('assets/backgrounds/bg_ingots.jpeg')  center/cover no-repeat; }
 #s2  { background: url('assets/backgrounds/bg_cat.jpeg')     center/cover no-repeat; }
 #s3  { background: url('assets/backgrounds/bg_cloud.jpeg')   center/cover no-repeat; }
@@ -762,50 +764,25 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
   <!-- Main content layer -->
   <div id="s0-v3-content">
 
-    <!-- Red scroll banner (横幅/卷轴) -->
+    <!-- Banner image: 领航大典·E夜暴富 -->
     <div class="s0-scroll-banner" id="oc-banner">
-      <svg class="s0-scroll-svg" viewBox="0 0 860 122" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="scG" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#d91c1c"/>
-            <stop offset="45%" stop-color="#b81010"/>
-            <stop offset="100%" stop-color="#8a0c0c"/>
-          </linearGradient>
-        </defs>
-        <!-- Shadow -->
-        <path d="M62,26 Q430,12 798,26 L798,96 Q430,110 62,96 Z" fill="rgba(0,0,0,0.18)" transform="translate(3,5)"/>
-        <!-- Main body (curved) -->
-        <path d="M62,20 Q430,6 798,20 L798,94 Q430,108 62,94 Z" fill="url(#scG)"/>
-        <!-- Top gold trim -->
-        <path d="M62,20 Q430,6 798,20" fill="none" stroke="rgba(247,217,126,0.6)" stroke-width="2.5"/>
-        <!-- Bottom trim -->
-        <path d="M62,94 Q430,108 798,94" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="1.5"/>
-        <!-- Shine band -->
-        <path d="M62,20 Q430,6 798,20 L798,40 Q430,26 62,40 Z" fill="rgba(255,255,255,0.1)"/>
-        <!-- Left scroll roll -->
-        <ellipse cx="42" cy="57" rx="42" ry="44" fill="#7a0e0e"/>
-        <ellipse cx="42" cy="57" rx="29" ry="42" fill="#6a0c0c"/>
-        <ellipse cx="42" cy="57" rx="17" ry="38" fill="#580a0a"/>
-        <ellipse cx="42" cy="57" rx="8"  ry="32" fill="#460808"/>
-        <!-- Right scroll roll -->
-        <ellipse cx="818" cy="57" rx="42" ry="44" fill="#7a0e0e"/>
-        <ellipse cx="818" cy="57" rx="29" ry="42" fill="#6a0c0c"/>
-        <ellipse cx="818" cy="57" rx="17" ry="38" fill="#580a0a"/>
-        <ellipse cx="818" cy="57" rx="8"  ry="32" fill="#460808"/>
-      </svg>
-      <div class="s0-scroll-text">领航大典 · E夜暴富</div>
+      <img src="assets/s0_banner.png" alt="领航大典·E夜暴富" style="width:780px;max-width:80vw;height:auto;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.35))"/>
     </div>
 
-    <!-- Main brush text: 开坛求福 -->
-    <div class="s0-main-text" id="oc-sub">开坛求福</div>
+    <!-- Main title image: 开坛求符 -->
+    <div class="s0-main-text" id="oc-sub" style="font-size:unset;color:unset;text-shadow:none;letter-spacing:unset;line-height:unset;margin-top:8px">
+      <img src="assets/s0_title.png" alt="开坛求符" style="height:clamp(140px,22vh,220px);width:auto;filter:drop-shadow(0 4px 18px rgba(120,0,0,0.4))"/>
+    </div>
+
+    <!-- Subtitle plaque: 领航山求符 -->
+    <div id="oc-subtitle" style="opacity:0">
+      <img src="assets/s0_subtitle.png" alt="领航山求符" style="width:520px;max-width:52vw;height:auto;filter:drop-shadow(0 3px 12px rgba(0,0,0,0.3))"/>
+    </div>
 
     <!-- Two cats at bottom -->
     <div class="s0-cats-row" id="oc-cats">
       <img class="s0-cat-img" src="assets/cats/both.png" alt="两只招财猫"/>
     </div>
-
-    <!-- Event small text -->
-    <div class="s0-small-v3" id="oc-sm">领航十一期 · Team E · 2026.05.17 · JJ Lake</div>
   </div>
 </section>
 
@@ -1741,17 +1718,18 @@ function onSlideEnter(i){
     // Falling chars
     spawnFallingChars();
     // Reset
-    ['oc-banner','oc-sub','oc-cats','oc-sm'].forEach(id=>{
+    ['oc-banner','oc-sub','oc-subtitle','oc-cats'].forEach(id=>{
       const el=document.getElementById(id);
       if(!el) return;
       el.classList.remove('show');
+      el.style.opacity='0';
       void el.offsetWidth;
     });
     sfx.gong();
-    setTimeout(()=>{ const b=document.getElementById('oc-banner'); if(b) b.classList.add('show'); },400);
-    setTimeout(()=>{ document.getElementById('oc-sub').classList.add('show'); sfx.bell(); },900);
-    setTimeout(()=>{ const c=document.getElementById('oc-cats'); if(c) c.classList.add('show'); },1400);
-    setTimeout(()=>{ const s=document.getElementById('oc-sm'); if(s) s.classList.add('show'); },1700);
+    setTimeout(()=>{ const b=document.getElementById('oc-banner'); if(b){ b.classList.add('show'); b.style.opacity=''; } },400);
+    setTimeout(()=>{ const t=document.getElementById('oc-sub'); if(t){ t.classList.add('show'); t.style.opacity=''; } sfx.bell(); },900);
+    setTimeout(()=>{ const st=document.getElementById('oc-subtitle'); if(st){ st.style.transition='opacity 0.6s ease'; st.style.opacity='1'; } },1250);
+    setTimeout(()=>{ const c=document.getElementById('oc-cats'); if(c){ c.classList.add('show'); c.style.opacity=''; } },1500);
   } else if(i===1){
     sfx.drum();
   } else if(i===2){
