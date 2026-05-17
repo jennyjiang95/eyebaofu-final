@@ -483,7 +483,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 .v3-scroll.open{animation:v2Open 0.6s cubic-bezier(0.34,1.2,0.64,1) both}
 .v3-scroll::before{content:'';position:absolute;top:0;left:4px;right:4px;height:40px;background:linear-gradient(180deg,rgba(247,217,126,0.2),transparent);pointer-events:none}
 .v3-scroll::after{content:'';position:absolute;bottom:0;left:4px;right:4px;height:40px;background:linear-gradient(0deg,rgba(247,217,126,0.2),transparent);pointer-events:none}
-.v3-scroll-inner{writing-mode:vertical-rl;text-orientation:upright;font-family:"ZCOOL QingKe HuangYou","Ma Shan Zheng","STKaiti","KaiTi","Kaiti SC","楷体","STSong","宋体",serif;font-size:clamp(2.2rem,4vh,3rem);font-weight:900;color:#f7d97e;letter-spacing:0;text-shadow:3px 3px 0 rgba(40,2,2,0.9),0 0 22px rgba(247,217,126,0.3);line-height:1.1;display:flex;flex-direction:row;justify-content:center;align-items:center;gap:0;height:100%;width:100%}
+.v3-scroll-inner{writing-mode:vertical-rl;text-orientation:upright;font-family:"ZCOOL QingKe HuangYou","Ma Shan Zheng","STKaiti","KaiTi","Kaiti SC","楷体","STSong","宋体",serif;font-size:clamp(2.2rem,4vh,3rem);font-weight:900;color:#f7d97e;letter-spacing:0;text-shadow:3px 3px 0 rgba(40,2,2,0.9),0 0 22px rgba(247,217,126,0.3);line-height:1;display:flex;flex-direction:row;justify-content:space-evenly;align-items:center;gap:0;height:100%;width:100%}
 .v3-corner{position:absolute;width:72px;height:72px;z-index:11;pointer-events:none;color:#a01818}
 .v3-tl{top:0;left:0}.v3-tr{top:0;right:0;transform:scaleX(-1)}.v3-bl{bottom:0;left:0;transform:scaleY(-1)}.v3-br{bottom:0;right:0;transform:scale(-1,-1)}
 .v3-deco{position:absolute;font-size:2rem;color:rgba(160,24,24,0.08);pointer-events:none;animation:drift 22s ease-in-out infinite alternate}
@@ -883,7 +883,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
     <svg class="corner bl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <svg class="corner br" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <div class="p0-banner">⚜ 领航十一期 · E 夜暴富 · 2026.05.17 ⚜</div>
-    <img src="assets/s1_title.png" alt="发财猫求符记" style="width:88%;max-width:1100px;height:auto;filter:drop-shadow(0 4px 18px rgba(120,0,0,0.35));margin:10px 0 4px"/>
+    <img src="assets/s1_title.png" alt="招财猫求符记" style="width:88%;max-width:1100px;height:auto;filter:drop-shadow(0 4px 18px rgba(120,0,0,0.35));margin:10px 0 4px"/>
     <div class="p0-center-text" style="font-size:2.6rem;line-height:1.8;margin-top:18px">
       各位领航道友好！小猫来此拜大佬！<br/>
       招财猫只想E夜发财？<br/>是想搞清楚暴富本质才来！
@@ -1734,6 +1734,22 @@ function playCouplet(slideId) {
   if(catEl){ catEl.classList.remove('cat-jump'); void catEl.offsetWidth; catEl.classList.add('cat-jump'); }
 }
 
+// ===== AUTO-SIZE SCROLL INNERS =====
+function sizeScrollInners(slideEl) {
+  if (!slideEl) return;
+  slideEl.querySelectorAll('.v3-scroll').forEach(scroll => {
+    const inner = scroll.querySelector('.v3-scroll-inner');
+    if (!inner) return;
+    const text = inner.textContent.trim();
+    const n = [...text].length;
+    if (!n) return;
+    const h = scroll.offsetHeight;
+    if (!h) return;
+    const fs = Math.floor(h / n * 0.88);
+    inner.style.fontSize = Math.min(Math.max(fs, 28), 200) + 'px';
+  });
+}
+
 // ===== SLIDE SYSTEM =====
 const slides = document.querySelectorAll('.slide');
 const N = slides.length;
@@ -1816,6 +1832,7 @@ function onSlideEnter(i){
       setTimeout(()=>{ cat.style.transform=''; setTimeout(()=>{ cat.style.transition=''; },350); },550);
     },4200);
   } else if(i>=6&&i<=9){
+    requestAnimationFrame(()=>sizeScrollInners(document.getElementById('s'+i)));
     playV3Couplet('s'+i);
   } else if(i===10){
     // 1. White flash
