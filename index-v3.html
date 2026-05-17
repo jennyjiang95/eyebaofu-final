@@ -508,7 +508,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
   position:relative;z-index:5;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   width:100%;height:100%;
-  gap:10px;padding-bottom:260px;
+  gap:4px;
 }
 #oc-subtitle{opacity:0}
 .s0-top-banner{
@@ -554,11 +554,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 /* S0 cats at bottom */
 .s0-cats-row{
   display:flex;align-items:flex-end;justify-content:center;
-  position:absolute;bottom:0;left:0;right:0;
-  opacity:0;
+  opacity:0;margin-top:-10px;
 }
 .s0-cats-row.show{animation:fadeUp 0.7s ease both}
-.s0-cat-img{width:700px;max-width:68vw;height:auto;object-fit:contain;border-radius:0;filter:drop-shadow(0 6px 20px rgba(80,30,5,0.25))}
+.s0-cat-img{width:780px;max-width:74vw;height:auto;object-fit:contain;border-radius:0;filter:drop-shadow(0 6px 20px rgba(80,30,5,0.2))}
 
 /* Cloud SVG decorations for parchment slides */
 .p3-cloud{position:absolute;pointer-events:none;opacity:0.12;color:#a01818}
@@ -764,25 +763,26 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
   <!-- Main content layer -->
   <div id="s0-v3-content">
 
-    <!-- Banner image: 领航大典·E夜暴富 -->
+    <!-- 1. Banner: 领航大典·E夜暴富 -->
     <div class="s0-scroll-banner" id="oc-banner">
-      <img src="assets/s0_banner.png" alt="领航大典·E夜暴富" style="width:780px;max-width:80vw;height:auto;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.35))"/>
+      <img src="assets/s0_banner.png" alt="领航大典·E夜暴富" style="width:820px;max-width:82vw;height:auto;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.3))"/>
     </div>
 
-    <!-- Main title image: 开坛求符 -->
-    <div class="s0-main-text" id="oc-sub" style="font-size:unset;color:unset;text-shadow:none;letter-spacing:unset;line-height:unset;margin-top:8px">
-      <img src="assets/s0_title.png" alt="开坛求符" style="height:clamp(140px,22vh,220px);width:auto;filter:drop-shadow(0 4px 18px rgba(120,0,0,0.4))"/>
+    <!-- 2. Title: 开坛求符 -->
+    <div class="s0-main-text" id="oc-sub" style="font-size:unset;color:unset;text-shadow:none;letter-spacing:unset;line-height:unset;margin-top:2px">
+      <img src="assets/s0_title.png" alt="开坛求符" style="height:clamp(120px,18vh,190px);width:auto;filter:drop-shadow(0 4px 18px rgba(120,0,0,0.4))"/>
     </div>
 
-    <!-- Subtitle plaque: 领航山求符 -->
-    <div id="oc-subtitle" style="opacity:0">
-      <img src="assets/s0_subtitle.png" alt="领航山求符" style="width:520px;max-width:52vw;height:auto;filter:drop-shadow(0 3px 12px rgba(0,0,0,0.3))"/>
-    </div>
-
-    <!-- Two cats at bottom -->
+    <!-- 3. Two cats (in flow, bigger) -->
     <div class="s0-cats-row" id="oc-cats">
       <img class="s0-cat-img" src="assets/cats/both.png" alt="两只招财猫"/>
     </div>
+
+    <!-- 4. Subtitle plaque: 领航山求符 -->
+    <div id="oc-subtitle" style="opacity:0">
+      <img src="assets/s0_subtitle.png" alt="领航山求符" style="width:560px;max-width:56vw;height:auto;filter:drop-shadow(0 3px 12px rgba(0,0,0,0.3))"/>
+    </div>
+
   </div>
 </section>
 
