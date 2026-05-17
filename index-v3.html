@@ -38,6 +38,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 .dot.active{background:#a01818;transform:scale(1.4)}.dot.past{background:rgba(160,24,24,0.5)}
 .hint{position:fixed;top:12px;right:60px;font-family:-apple-system,sans-serif;font-size:11px;color:rgba(120,40,10,0.6);z-index:100}
 #sfx-toggle{position:fixed;top:8px;right:16px;z-index:100;background:rgba(248,235,195,0.92);border:1px solid rgba(160,24,24,0.4);color:#8a0e0e;font-size:16px;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+#bgm-toggle{position:fixed;top:8px;right:56px;z-index:100;background:rgba(248,235,195,0.92);border:1px solid rgba(160,24,24,0.4);color:#8a0e0e;font-size:16px;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
 
 /* Typography */
 .title-cn{font-weight:900;color:#a01818;text-shadow:2px 2px 0 rgba(247,217,126,0.5),0 0 20px rgba(160,24,24,0.3);letter-spacing:0.1em}
@@ -96,17 +97,17 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 .s2-title-row{display:flex;flex-direction:column;align-items:center;gap:2px;margin-bottom:10px}
 .cat-grid{display:flex;flex-direction:column;align-items:center;gap:10px;max-width:1600px}
 .cat-grid-row{display:flex;gap:14px;justify-content:center}
-.cat-frame-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;width:220px;opacity:0;transform:translateY(-60px)}
+.cat-frame-wrap{display:flex;flex-direction:column;align-items:center;gap:5px;width:185px;opacity:0;transform:translateY(-60px)}
 .cat-frame-wrap.drop{animation:catDrop 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
 @keyframes catDrop{0%{opacity:0;transform:translateY(-80px) rotate(var(--ir,0deg))}80%{transform:translateY(4px) rotate(0)}100%{opacity:1;transform:translateY(0) rotate(0)}}
-.cat-frame{position:relative;width:200px;height:200px;margin:0 auto;overflow:visible}
-.cat-frame img:not(.cat-ear-img){width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:top;border:none;box-shadow:0 4px 16px rgba(0,0,0,0.3);display:block}
+.cat-frame{position:relative;width:160px;height:160px;margin:0 auto;overflow:visible}
+.cat-frame img:not(.cat-ear-img){width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:top;border:none;box-shadow:0 4px 16px rgba(0,0,0,0.3);display:block}
 .cat-ear{position:absolute;top:-16px;z-index:2}
 .cat-ear.left{left:10px}.cat-ear.right{right:10px}
 .cat-whiskers{display:flex;gap:6px;justify-content:center;margin-top:3px}
 .cat-whiskers span{display:block;height:1px;width:18px;background:var(--fc,#4a2c1a);opacity:0.5}
-.cat-name{font-size:1.8rem;color:#4a1d10;font-weight:700;text-align:center;line-height:1.3}
-.cat-role{font-size:1.4rem;padding:4px 12px;border-radius:8px;font-weight:700;background:var(--fc,#4a2c1a);color:#f4e4bc;margin-top:2px}
+.cat-name{font-size:1.4rem;color:#4a1d10;font-weight:700;text-align:center;line-height:1.3}
+.cat-role{font-size:1.1rem;padding:3px 10px;border-radius:8px;font-weight:700;background:var(--fc,#4a2c1a);color:#f4e4bc;margin-top:2px}
 
 /* ===== SLIDE 3: 四位道长 ===== */
 .mentors-row{display:flex;gap:60px;align-items:flex-start;justify-content:center;margin-top:8px}
@@ -309,6 +310,32 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 .s10-finale{font-size:3.2rem;font-weight:900;letter-spacing:0.22em;text-align:center;line-height:1.2;color:#f7d97e;text-shadow:3px 3px 0 #a01818,0 0 30px rgba(247,217,126,0.5);opacity:0;transform:translateY(20px);position:relative;z-index:10}
 .s10-finale.show{animation:fadeUp 0.8s ease both}
 
+/* === S10: cats slide in from sides, 3× bigger === */
+#s10 .summit-climbing-cat{width:240px;height:240px;z-index:15}
+#s10 .summit-climbing-cat.climbing-token{animation:catSideL 2.2s ease-out 1.0s both}
+#s10 .summit-climbing-cat.climbing-title{animation:catSideR 2.2s ease-out 1.6s both}
+@keyframes catSideL{
+  0%  {opacity:0;left:-16%;bottom:18%;transform:scale(1) rotate(6deg)}
+  20% {opacity:1}
+  100%{opacity:1;left:1%;bottom:18%;transform:scale(1) rotate(0)}
+}
+@keyframes catSideR{
+  0%  {opacity:0;left:112%;bottom:18%;transform:scale(1) rotate(-6deg)}
+  20% {opacity:1}
+  100%{opacity:1;left:82%;bottom:18%;transform:scale(1) rotate(0)}
+}
+/* === S10: mentor no names, portraits 1.5× === */
+#s10 .mentor-watcher img{width:135px;height:135px}
+#s10 .mentor-watcher-name{display:none}
+/* === S10: wealth cols 3×, 经济 col gold not blue === */
+#s10 .s10-wcol.b{background:rgba(200,148,26,0.22);border:2px solid rgba(200,148,26,0.85)}
+#s10 .s10-wcol h4{font-size:4.2rem}
+#s10 .s10-wcol p{font-size:3rem;line-height:1.4}
+#s10 .s10-wealth{max-width:1380px;gap:24px}
+#s10 .s10-wcol{padding:16px 40px}
+/* === S10: finale line bigger, wraps naturally === */
+#s10 .s10-finale{font-size:2.4rem;letter-spacing:0.1em;line-height:1.4;max-width:1200px}
+
 /* === SLIDE 11: QR 投票 (Parchment) === */
 #s11{background:radial-gradient(ellipse at 45% 40%,#f7ecc8 0%,#edd9a0 55%,#e2c878 100%)}
 .qr11-parchment{width:calc(100% - 60px);height:calc(100% - 50px);position:relative;
@@ -320,7 +347,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:24px 60px;overflow:hidden;gap:14px}
 .qr11-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:5;width:100%;height:100%}
-.qr11-headline{font-size:2.5rem;color:#8a0e0e;font-weight:900;text-align:center;line-height:1.5;text-shadow:2px 2px 0 rgba(200,148,26,0.4);opacity:0;letter-spacing:0.06em}
+.qr11-headline{font-size:7.5rem;color:#8a0e0e;font-weight:900;text-align:center;line-height:1.3;text-shadow:2px 2px 0 rgba(200,148,26,0.4);opacity:0;letter-spacing:0.06em}
 .qr11-headline.show{animation:fadeUp 0.6s ease both}
 .qr11-main-row{display:flex;align-items:center;gap:40px;justify-content:center}
 .qr11-ring{position:relative;display:flex;align-items:center;justify-content:center}
@@ -328,7 +355,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 .qr11-pulse-ring:nth-child(2){animation-delay:0.75s;border-color:rgba(200,148,26,0.25);width:295px;height:295px}
 .qr11-pulse-ring:nth-child(3){animation-delay:1.5s;border-color:rgba(160,24,24,0.15);width:310px;height:310px}
 @keyframes qrPulseRing{0%{transform:scale(0.85);opacity:0.85}100%{transform:scale(1.35);opacity:0}}
-.qr11-img-wrap{width:240px;height:240px;border:6px solid #a01818;border-radius:10px;
+.qr11-img-wrap{width:480px;height:480px;border:6px solid #a01818;border-radius:10px;
   box-shadow:inset 0 0 0 2px #f7d97e,0 0 24px rgba(160,24,24,0.3),0 4px 20px rgba(100,40,10,0.2);
   background:#fff;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0.5)}
 .qr11-img-wrap.show{animation:qrBurst 0.65s cubic-bezier(0.34,1.56,0.64,1) 0.3s both,qrWiggle11 3s ease-in-out 2.5s infinite}
@@ -337,10 +364,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 @keyframes qrWiggle11{0%,80%,100%{transform:scale(1) rotate(0)}84%{transform:scale(1) rotate(-3deg)}88%{transform:scale(1) rotate(3deg)}92%{transform:scale(1) rotate(-2deg)}96%{transform:scale(1) rotate(1deg)}}
 .qr11-side-cats{display:flex;flex-direction:column;gap:12px;align-items:center}
 .qr11-side-cat-img{width:120px;height:120px;object-fit:contain;border-radius:0;box-shadow:none;border:none;filter:drop-shadow(0 3px 10px rgba(0,0,0,0.3))}
-.qr11-sub{font-size:1.35rem;color:#5a1a0a;text-align:center;font-weight:600;line-height:1.6;opacity:0}
+.qr11-sub{font-size:2.5rem;color:#5a1a0a;text-align:center;font-weight:600;line-height:1.6;opacity:0}
 .qr11-sub.show{animation:fadeUp 0.5s ease 0.8s both}
-.qr11-vote{font-size:1.7rem;color:#a01818;font-weight:900;letter-spacing:0.12em;
-  border:2px solid #a01818;padding:7px 28px;border-radius:22px;opacity:0;
+.qr11-vote{font-size:5.1rem;color:#a01818;font-weight:900;letter-spacing:0.12em;
+  border:3px solid #a01818;padding:10px 40px;border-radius:22px;opacity:0;
   box-shadow:inset 0 0 0 1px #f7d97e,0 2px 10px rgba(160,24,24,0.2);
   background:rgba(247,217,126,0.25)}
 .qr11-vote.show{animation:fadeUp 0.5s ease 1.2s both}
@@ -456,7 +483,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 .v3-scroll.open{animation:v2Open 0.6s cubic-bezier(0.34,1.2,0.64,1) both}
 .v3-scroll::before{content:'';position:absolute;top:0;left:4px;right:4px;height:40px;background:linear-gradient(180deg,rgba(247,217,126,0.2),transparent);pointer-events:none}
 .v3-scroll::after{content:'';position:absolute;bottom:0;left:4px;right:4px;height:40px;background:linear-gradient(0deg,rgba(247,217,126,0.2),transparent);pointer-events:none}
-.v3-scroll-inner{writing-mode:vertical-rl;text-orientation:upright;font-family:"ZCOOL QingKe HuangYou","Ma Shan Zheng","STKaiti","KaiTi","Kaiti SC","楷体","STSong","宋体",serif;font-size:clamp(5.8rem,13vh,12rem);font-weight:900;color:#f7d97e;letter-spacing:0.2em;text-shadow:3px 3px 0 rgba(40,2,2,0.9),0 0 22px rgba(247,217,126,0.3);line-height:1}
+.v3-scroll-inner{writing-mode:vertical-rl;text-orientation:upright;font-family:"ZCOOL QingKe HuangYou","Ma Shan Zheng","STKaiti","KaiTi","Kaiti SC","楷体","STSong","宋体",serif;font-size:clamp(2.2rem,4vh,3rem);font-weight:900;color:#f7d97e;letter-spacing:0;text-shadow:3px 3px 0 rgba(40,2,2,0.9),0 0 22px rgba(247,217,126,0.3);line-height:1;display:flex;flex-direction:row;justify-content:space-evenly;align-items:center;height:100%;width:100%}
 .v3-corner{position:absolute;width:72px;height:72px;z-index:11;pointer-events:none;color:#a01818}
 .v3-tl{top:0;left:0}.v3-tr{top:0;right:0;transform:scaleX(-1)}.v3-bl{bottom:0;left:0;transform:scaleY(-1)}.v3-br{bottom:0;right:0;transform:scale(-1,-1)}
 .v3-deco{position:absolute;font-size:2rem;color:rgba(160,24,24,0.08);pointer-events:none;animation:drift 22s ease-in-out infinite alternate}
@@ -473,9 +500,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 .qr11-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:5;padding:18px 20px}
 .qr11-main-row{display:flex;align-items:center;gap:24px;justify-content:center}
 .qr11-ring{position:relative;display:flex;align-items:center;justify-content:center}
-.qr11-pulse-ring{position:absolute;width:340px;height:340px;border-radius:50%;border:2px solid rgba(160,24,24,0.25);animation:qrPulseRing 2.2s ease-out infinite;pointer-events:none}
-.qr11-pulse-ring:nth-child(2){animation-delay:0.75s;border-color:rgba(200,148,26,0.25);width:360px;height:360px}
-.qr11-pulse-ring:nth-child(3){animation-delay:1.5s;border-color:rgba(160,24,24,0.15);width:380px;height:380px}
+.qr11-pulse-ring{position:absolute;width:680px;height:680px;border-radius:50%;border:2px solid rgba(160,24,24,0.25);animation:qrPulseRing 2.2s ease-out infinite;pointer-events:none}
+.qr11-pulse-ring:nth-child(2){animation-delay:0.75s;border-color:rgba(200,148,26,0.25);width:720px;height:720px}
+.qr11-pulse-ring:nth-child(3){animation-delay:1.5s;border-color:rgba(160,24,24,0.15);width:760px;height:760px}
 @keyframes qrPulseRing{0%{transform:scale(0.85);opacity:0.85}100%{transform:scale(1.35);opacity:0}}
 .qr11-side-cat{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
 .qr11-side-cat.show{opacity:1;transform:translateY(0)}
@@ -596,8 +623,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 
 /* === CAT EAR ILLUSTRATED IMAGE (S2) === */
 .cat-ear-img{
-  position:absolute;top:-38px;left:50%;transform:translateX(-50%);
-  width:88px;height:auto;
+  position:absolute;top:-28px;left:50%;transform:translateX(-50%);
+  width:70px;height:auto;
   object-fit:contain;
   z-index:3;
   pointer-events:none;
@@ -606,7 +633,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
   box-shadow:none !important;
 }
 /* extra padding-top on wrap so ears don't clip */
-.cat-frame-wrap{padding-top:38px}
+.cat-frame-wrap{padding-top:28px}
 
 /* =====================================================
    SLIDE BACKGROUND IMAGES
@@ -618,33 +645,122 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 #s0  { background: url('assets/backgrounds/bg_s0.png') center/cover no-repeat !important; overflow:hidden; }
 #s1  { background: url('assets/backgrounds/bg_s0.png')  center/cover no-repeat; }
 #s2  { background: url('assets/backgrounds/bg_s0.png')        center/cover no-repeat; }
-#s3  { background: url('assets/backgrounds/bg_cloud.jpeg')   center/cover no-repeat; }
+#s3  { background: url('assets/backgrounds/bg_s0.png')        center/cover no-repeat; }
 #s4  { background: url('assets/backgrounds/bg_plain.jpeg')   center/cover no-repeat; }
 #s5  { background: url('assets/backgrounds/bg_cat.jpeg')     center/cover no-repeat; }
-#s11 { background: url('assets/backgrounds/bg_cloud.jpeg')   center/cover no-repeat !important; }
+#s11 { background: url('assets/backgrounds/bg_s0.png') center/cover no-repeat !important; }
 
-/* For couplet slides S6-S9 the image goes behind the v3-wrap */
-#s6, #s7, #s8, #s9 { background: url('assets/backgrounds/bg_ingots.jpeg') center/cover no-repeat; }
+/* For couplet slides S6-S9 — parchment bg, no gold ingots */
+#s6, #s7, #s8, #s9 { background: url('assets/backgrounds/bg_s0.png') center/cover no-repeat; }
 #s6 .v3-wrap, #s7 .v3-wrap, #s8 .v3-wrap, #s9 .v3-wrap {
   background: transparent;
+}
+/* Banner image replaces CSS gradient scrolls */
+#s6 .v3-scroll,#s7 .v3-scroll,#s8 .v3-scroll,#s9 .v3-scroll {
+  background: url('assets/banner.png') center/100% 100% no-repeat;
+  border: none;
+  box-shadow: none;
+}
+/* Cat illustration in couplet slide centers */
+.v3-cat-center {
+  height: 190px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.35));
+}
+/* Question speech bubble above cat */
+.v3-qbox {
+  background: rgba(255,252,240,0.97);
+  border: 2.5px solid #a01818;
+  border-radius: 14px;
+  padding: 12px 20px;
+  font-size: 1.35rem;
+  color: #4a1d10;
+  text-align: center;
+  line-height: 1.7;
+  position: relative;
+  max-width: 600px;
+  box-shadow: 0 4px 14px rgba(160,24,24,0.18);
+}
+.v3-qbox::after {
+  content: '';
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 13px solid transparent;
+  border-top-color: #a01818;
+  border-bottom: 0;
+}
+.v3-qbox::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 10px solid transparent;
+  border-top-color: rgba(255,252,240,0.97);
+  border-bottom: 0;
+  z-index: 1;
 }
 
 /* Parchment shell: image already provides the visual frame.
    Keep the div purely for layout (padding/flex) — remove double border. */
 #s1 .parchment,#s2 .parchment,#s3 .parchment,
 #s4 .parchment,#s5 .parchment,#s11 .parchment {
-  background: rgba(248,235,195,0.18); /* ultra-light warm tint for readability */
+  background: transparent;
   border: none;
   box-shadow: none;
+}
+
+/* S4: cloud-parchment image fills the entire slide (image already has red border) */
+#s4 {
+  background: url(assets/backgrounds/bg_cloud_parchment.png) center/cover no-repeat;
+}
+
+/* S4 activities: explicit gap above grid + more space between rows */
+#s4 .grid66-wrap {
+  grid-template-rows: 178px 178px;
+  flex: 0 0 auto;
+  max-height: 400px;
+  margin-top: 80px;
+  row-gap: 28px;
 }
 
 /* Hide CSS corner SVGs — image already has corner fretwork */
 #s1 .corner,#s2 .corner,#s3 .corner,
 #s4 .corner,#s5 .corner,#s11 .corner { display:none; }
 
-/* S3 mentor slide: title at top, mentors fill remaining space centered */
-#s3 .parchment { justify-content: flex-start; padding-top: 28px; }
-#s3 .mentors-row { flex: 1; align-items: center; }
+/* S2 team slide: flex-start so title sits lower */
+#s2 .parchment { justify-content: flex-start; padding-top: 60px; }
+/* S3 mentor slide */
+#s3 .parchment { justify-content: flex-start; padding-top: 16px; }
+/* padding-top absorbs hat overflow so hat never clips into title above */
+#s3 .mentors-row { flex: 1; align-items: flex-start; gap: 40px; padding-top: 80px; justify-content: center; }
+#s3 .mentor-photo-wrap { width: 260px; height: 300px; }
+#s3 .bagua-ring { width: 245px; height: 245px; top: 16px; }
+#s3 .mentor-photo { width: 190px; height: 190px; top: 36px; }
+#s3 .dao-hat { top: -44px; width: 140px; height: 81px; }
+/* white-space:nowrap keeps all names on one line */
+#s3 .mentor-ribbon { font-size: 2.5rem; padding: 7px 22px; white-space: nowrap; }
+#s3 .mentor-title-small { font-size: 1.8rem; max-width: 300px; line-height: 1.4; text-align: center; }
+
+/* ===== S5 overrides: 两猫领航 ===== */
+/* Cloud parchment image fills slide — provides red border */
+#s5 { background: url(assets/backgrounds/bg_cloud_parchment.png) center/cover no-repeat; }
+/* Title at top; cards fill remaining height */
+#s5 .parchment { justify-content: flex-start; padding-top: 28px; }
+/* Grid flexes to fill remaining space */
+#s5 .p1-grid { flex: 1; min-height: 0; margin-top: 6px; gap: 28px; }
+#s5 .p1-card { flex: 1; justify-content: center; }
+/* Token card: warm gold instead of blue */
+#s5 .p1-card.blue { border-color: #c8941a; background: rgba(255,250,220,0.85); }
+#s5 .p1-card.blue h3 { color: #6b2a10; }
+/* Scale up card text 3× */
+#s5 .p1-card h3 { font-size: 2.6rem; }
+#s5 .p1-card p { font-size: 2.6rem; line-height: 1.5; }
+/* Tagline 2× */
+#s5 .p1-tagline { font-size: 4.2rem; margin-top: 8px; padding: 4px 32px; }
 
 /* V3 couplet wrap: keep gold outer border but transparent centre bg */
 #s6 .v3-wrap,#s7 .v3-wrap,#s8 .v3-wrap,#s9 .v3-wrap {
@@ -663,6 +779,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 <body>
 
 <div class="hint">空格 / → 前进 · F 全屏</div>
+<audio id="bgm" src="assets/music.m4a" loop preload="auto"></audio>
+<button id="bgm-toggle" title="音乐">♪</button>
 <button id="sfx-toggle" title="音效">🔇</button>
 <div id="flash-overlay"></div>
 <canvas id="confetti-canvas"></canvas>
@@ -717,35 +835,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
     </g>
   </svg>
 
-  <!-- ☁ Left clouds -->
-  <svg class="s0-cloud-svg" style="position:absolute;left:-40px;top:18%;width:340px;opacity:0.9;z-index:3" viewBox="0 0 340 180" fill="rgba(252,246,232,0.96)">
-    <ellipse cx="160" cy="130" rx="130" ry="55"/>
-    <ellipse cx="110" cy="105" rx="85" ry="50"/>
-    <ellipse cx="185" cy="95" rx="100" ry="55"/>
-    <ellipse cx="255" cy="118" rx="72" ry="45"/>
-    <ellipse cx="80" cy="128" rx="60" ry="38"/>
-  </svg>
-  <svg class="s0-cloud-svg" style="position:absolute;left:-20px;top:58%;width:280px;opacity:0.85;z-index:3" viewBox="0 0 280 150" fill="rgba(252,246,232,0.94)">
-    <ellipse cx="130" cy="105" rx="110" ry="48"/>
-    <ellipse cx="90" cy="88" rx="70" ry="45"/>
-    <ellipse cx="160" cy="80" rx="80" ry="48"/>
-    <ellipse cx="215" cy="100" rx="58" ry="38"/>
-  </svg>
-
-  <!-- ☁ Right clouds -->
-  <svg class="s0-cloud-svg" style="position:absolute;right:-40px;top:14%;width:340px;opacity:0.9;z-index:3" viewBox="0 0 340 180" fill="rgba(252,246,232,0.96)" transform="scale(-1,1)">
-    <ellipse cx="160" cy="130" rx="130" ry="55"/>
-    <ellipse cx="110" cy="105" rx="85" ry="50"/>
-    <ellipse cx="185" cy="95" rx="100" ry="55"/>
-    <ellipse cx="255" cy="118" rx="72" ry="45"/>
-    <ellipse cx="80" cy="128" rx="60" ry="38"/>
-  </svg>
-  <svg class="s0-cloud-svg" style="position:absolute;right:-20px;top:56%;width:280px;opacity:0.85;z-index:3" viewBox="0 0 280 150" fill="rgba(252,246,232,0.94)" transform="scale(-1,1)">
-    <ellipse cx="130" cy="105" rx="110" ry="48"/>
-    <ellipse cx="90" cy="88" rx="70" ry="45"/>
-    <ellipse cx="160" cy="80" rx="80" ry="48"/>
-    <ellipse cx="215" cy="100" rx="58" ry="38"/>
-  </svg>
 
   <!-- ✦ Scattered sparkle stars -->
   <span class="s0-star" style="top:12%;left:18%">✦</span>
@@ -826,11 +915,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
     <svg class="corner tr" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <svg class="corner bl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <svg class="corner br" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
-    <!-- Clouds -->
-    <svg class="cloud-bg" style="top:10%;left:5%;width:120px" viewBox="0 0 120 60"><ellipse cx="60" cy="40" rx="50" ry="20" fill="currentColor"/><ellipse cx="40" cy="35" rx="30" ry="18" fill="currentColor"/><ellipse cx="80" cy="30" rx="30" ry="18" fill="currentColor"/></svg>
-    <svg class="cloud-bg" style="top:15%;right:5%;width:100px;animation-delay:-10s" viewBox="0 0 120 60"><ellipse cx="60" cy="40" rx="50" ry="20" fill="currentColor"/><ellipse cx="40" cy="35" rx="30" ry="18" fill="currentColor"/><ellipse cx="80" cy="30" rx="30" ry="18" fill="currentColor"/></svg>
-    <div class="title-cn" style="font-size:3.4rem;margin-bottom:4px">四 位 仙 师 · 道 法 加 持</div>
-    <div class="divider"><span>· E代名师 · 传道授业 ·</span></div>
+    <div class="title-cn" style="font-size:9rem;line-height:1;margin-bottom:4px">四 位 仙 师 · 领 航 有 道</div>
+    <div class="title-cn" style="font-size:3.4rem;margin-bottom:0">· E代名师 · 开山指教 ·</div>
     <div class="mentors-row" id="mentors-row">
       <!-- mentor 1: 培基道长 -->
       <div class="mentor-portrait" style="animation-delay:0.1s">
@@ -854,7 +940,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
           <img class="mentor-photo" src="assets/mentors/培基.png" alt="培基道长">
         </div>
         <div class="mentor-ribbon">培基道长</div>
-        <div class="mentor-title-small">Founder &amp; Managing Partner<br/>Voyager Capital</div>
+        <div class="mentor-title-small">Director of Applied Science<br/>Amazon</div>
       </div>
       <!-- mentor 2: 夏淳道长 -->
       <div class="mentor-portrait" style="animation-delay:0.35s">
@@ -878,7 +964,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
           <img class="mentor-photo" src="assets/mentors/夏淳.png" alt="夏淳道长">
         </div>
         <div class="mentor-ribbon">夏淳道长</div>
-        <div class="mentor-title-small">Cofounder, 3 Tech Corps &amp; TSVC</div>
+        <div class="mentor-title-small">Founder &amp; Managing Partner<br/>Voyager Capital</div>
       </div>
       <!-- mentor 3: 胜华道长 -->
       <div class="mentor-portrait" style="animation-delay:0.6s">
@@ -902,7 +988,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
           <img class="mentor-photo" src="assets/mentors/胜华.png" alt="胜华道长">
         </div>
         <div class="mentor-ribbon">胜华道长</div>
-        <div class="mentor-title-small">Director of Applied Science<br/>Amazon</div>
+        <div class="mentor-title-small">VP of Engineering<br/>Faire</div>
       </div>
       <!-- mentor 4: Yvonne道长 -->
       <div class="mentor-portrait" style="animation-delay:0.85s">
@@ -926,7 +1012,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
           <img class="mentor-photo" src="assets/mentors/Yvonne.png" alt="Yvonne道长">
         </div>
         <div class="mentor-ribbon">Yvonne 道长</div>
-        <div class="mentor-title-small">VP of Engineering<br/>Faire</div>
+        <div class="mentor-title-small">Cofounder<br/>3 Tech Corps &amp; TSVC</div>
       </div>
     </div>
   </div>
@@ -934,13 +1020,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 
 <!-- ===== S4: 12场修行 ===== -->
 <section class="slide" id="s4">
-  <div class="parchment" style="padding:20px 30px">
+  <div class="parchment" style="padding:50px 30px 16px;justify-content:flex-start">
     <svg class="corner tl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <svg class="corner tr" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <svg class="corner bl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <svg class="corner br" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
-    <div class="title-cn" style="font-size:2.4rem;margin-bottom:2px">十 二 场 · 求 道 修 行</div>
-    <div class="divider"><span>· 9 个月 · 12 次聚 · 思想碰撞 ·</span></div>
+    <div class="title-cn" style="font-size:8.5rem;line-height:1;margin-bottom:6px;white-space:nowrap">九 月 修 行 · 十 二 场 论 道</div>
+    <div class="divider" style="font-size:3.4rem;font-weight:700;letter-spacing:0.25em;color:#6b2a10;margin:0 0 14px;opacity:0.9"><span>· 两 猫 得 解 难 题 两 道 ·</span></div>
     <div class="grid66-wrap" id="mosaic-wrap">
       <!-- JS filled -->
     </div>
@@ -954,36 +1040,22 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
     <svg class="corner tr" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <svg class="corner bl" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
     <svg class="corner br" viewBox="0 0 80 80"><path d="M0,0 L80,0 L80,8 L20,8 L20,20 L8,20 L8,80 L0,80 Z" fill="currentColor" opacity="0.7"/><circle cx="14" cy="14" r="4" fill="currentColor"/></svg>
-    <div class="title-cn" style="font-size:2.8rem;margin-bottom:4px">两 猫 入 山 · 我 们 来 求 什 么</div>
-    <div class="divider"><span></span></div>
+    <div class="title-cn" style="font-size:8rem;margin-bottom:4px;letter-spacing:0.12em">两 猫 领 航 山 求 符</div>
     <div class="p1-grid">
       <!-- Token猫 left -->
       <div class="p1-card blue">
-        <div class="wave-layer">
-          <svg class="wave-svg" viewBox="0 0 1200 55" preserveAspectRatio="none"><path d="M0,30 Q150,5 300,30 Q450,55 600,30 Q750,5 900,30 Q1050,55 1200,30 L1200,55 L0,55 Z" fill="rgba(44,109,181,0.25)"/></svg>
-          <svg class="wave-svg w2" viewBox="0 0 1200 55" preserveAspectRatio="none"><path d="M0,35 Q150,10 300,35 Q450,55 600,35 Q750,10 900,35 Q1050,55 1200,35 L1200,55 L0,55 Z" fill="rgba(44,109,181,0.2)"/></svg>
-          <svg class="wave-svg w3" viewBox="0 0 1200 55" preserveAspectRatio="none"><path d="M0,40 Q150,18 300,40 Q450,55 600,40 Q750,18 900,40 Q1050,55 1200,40 L1200,55 L0,55 Z" fill="rgba(44,109,181,0.15)"/></svg>
-        </div>
-        <span class="token-flame">🔥</span>
         <img id="cat-token-s5" src="assets/cats/token.png" alt="Token猫" class="cat-real-img cat-float">
         <h3>Token 猫 · 智能浪潮猫</h3>
         <p>AI 浪潮拍过来，我只看到 Token 在烧，护城河都消失掉<br/>沉浮在算法通杀海啸，我是在驾驭浪潮？<br/>还是在被 AI 浪潮吞掉？</p>
       </div>
       <!-- Title猫 right -->
       <div class="p1-card red">
-        <div style="position:relative;display:inline-block">
-          <div class="sweat-drop"><span></span><span></span><span></span></div>
-          <svg width="45" height="95" viewBox="0 0 45 95" class="hoe-anim">
-            <line x1="22" y1="5" x2="22" y2="70" stroke="#6b3a1f" stroke-width="4" stroke-linecap="round"/>
-            <rect x="2" y="65" width="41" height="10" rx="3" fill="#777" stroke="#444" stroke-width="1.5"/>
-          </svg>
-        </div>
         <img id="cat-title-s5" src="assets/cats/title.png" alt="Title猫" class="cat-real-img cat-float">
         <h3>Title 猫 · 职场破局猫</h3>
         <p>我曾以为勤奋就能开天辟地和高效<br/>可拼尽全力后，项目依然原地打转让我恼<br/>我是开荒破局的人，还是被局势清场？</p>
       </div>
     </div>
-    <div class="p1-tagline">来 时 求 机 会 &nbsp;·&nbsp; 后 来 求 判 断</div>
+    <div class="p1-tagline">领 航 道 长 开 坛 赐 符 讲 道</div>
   </div>
 </section>
 
@@ -1003,7 +1075,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
       <div class="v3-scroll"><div class="v3-scroll-inner">没时间买大盘</div></div>
     </div>
     <div class="v3-center">
-      <img class="v3-mentor-img" src="assets/mentors/培基.png" alt="培基道长">
+      <div class="v3-qbox">我的工资会稳吗？<br>我的钱该往哪放？<br>我想要暴富，道长求指教！</div>
+      <img class="v3-cat-center" src="assets/cats/token.png" alt="Token猫">
       <div class="v3-slide-title">第 一 道 符</div>
       <div class="v3-charm-name">财 富<br>复 利</div>
       <div class="v3-badge">🔔 培基道长 授符</div>
@@ -1029,19 +1102,20 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
     <span class="v3-deco" style="top:22%;right:26%;animation-delay:3s">☁</span>
     <span class="v3-deco" style="top:72%;right:26%;animation-delay:7s">☁</span>
     <div class="v3-side" id="v3sr7-L">
-      <div class="v3-scroll"><div class="v3-scroll-inner">别做白领提效</div></div>
-      <div class="v3-scroll"><div class="v3-scroll-inner">职能压缩梦靥</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">别做白领只提效表现</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">职能压缩将是梦靥</div></div>
     </div>
     <div class="v3-center">
-      <img class="v3-mentor-img" src="assets/mentors/夏淳.png" alt="夏淳道长">
+      <div class="v3-qbox">如果 AI 真的做得比我更好，<br>那我的护城河岂不消失掉？<br>难道我只能坐等被算法清场、<br>然后天天自我内耗？</div>
+      <img class="v3-cat-center" src="assets/cats/token.png" alt="Token猫">
       <div class="v3-slide-title">第 二 道 符</div>
       <div class="v3-charm-name">智 能<br>黑 领</div>
       <div class="v3-badge">🔔 夏淳道长 授符</div>
       <div class="v3-note" id="cn7">别做提效白领 · 要做设限黑领</div>
     </div>
     <div class="v3-side" id="v3sr7-R">
-      <div class="v3-scroll"><div class="v3-scroll-inner">要做黑领设限</div></div>
-      <div class="v3-scroll"><div class="v3-scroll-inner">人拍板守红线</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">要做黑领来清楚设限</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">人拍板当AI碰触红线</div></div>
     </div>
   </div>
   <div class="gold-glow"></div>
@@ -1059,19 +1133,20 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
     <span class="v3-deco" style="top:20%;right:26%;animation-delay:2s">☁</span>
     <span class="v3-deco" style="top:68%;right:26%;animation-delay:6.5s">☁</span>
     <div class="v3-side" id="v3sr8-L">
-      <div class="v3-scroll"><div class="v3-scroll-inner">平时存信任</div></div>
-      <div class="v3-scroll"><div class="v3-scroll-inner">对方视角谈</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">平时联系存信任</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">对方视角谈目标</div></div>
     </div>
     <div class="v3-center">
-      <img class="v3-mentor-img" src="assets/mentors/胜华.png" alt="胜华道长">
+      <div class="v3-qbox">明明我付出了一切，<br>为什么项目还是毫无进展？<br>到底是我遭人讨厌，<br>还是我能力受限？</div>
+      <img class="v3-cat-center" src="assets/cats/title.png" alt="Title猫">
       <div class="v3-slide-title">第 三 道 符</div>
       <div class="v3-charm-name">信 任<br>协 作</div>
       <div class="v3-badge">🔔 胜华道长 授符</div>
       <div class="v3-note" id="cn8">信任存够了，路才推得开</div>
     </div>
     <div class="v3-side" id="v3sr8-R">
-      <div class="v3-scroll"><div class="v3-scroll-inner">风险备方案</div></div>
-      <div class="v3-scroll"><div class="v3-scroll-inner">缺人我补上</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">风险方案齐准备</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">组织缺位我补上</div></div>
     </div>
   </div>
   <div class="gold-glow"></div>
@@ -1093,14 +1168,15 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
       <div class="v3-scroll"><div class="v3-scroll-inner">再问谁在乎</div></div>
     </div>
     <div class="v3-center">
-      <img class="v3-mentor-img" src="assets/mentors/Yvonne.png" alt="Yvonne道长">
+      <div class="v3-qbox">身边其他猫窜升没上线，<br>为什么我就找不到节奏来实现？<br>到底是我努力不够显现？<br>还是老板真的没有底线？</div>
+      <img class="v3-cat-center" src="assets/cats/title.png" alt="Title猫">
       <div class="v3-slide-title">第 四 道 符</div>
       <div class="v3-charm-name">高 维<br>判 断</div>
       <div class="v3-badge">🔔 Yvonne 道长 授符</div>
       <div class="v3-note" id="cn9">不靠喊累，靠 Deliver · 不是更努力，是看更远</div>
     </div>
     <div class="v3-side" id="v3sr9-R">
-      <div class="v3-scroll"><div class="v3-scroll-inner">最坏能承受</div></div>
+      <div class="v3-scroll"><div class="v3-scroll-inner">退路留得足</div></div>
       <div class="v3-scroll"><div class="v3-scroll-inner">结果换地盘</div></div>
     </div>
   </div>
@@ -1112,8 +1188,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
   <!-- Pulsing gold burst -->
   <div class="gold-burst-ring"></div>
 
-  <!-- Mountain SVG background -->
-  <svg style="position:absolute;bottom:0;left:0;width:100%;height:65%;pointer-events:none;z-index:1" viewBox="0 0 1920 580" preserveAspectRatio="xMidYMax meet">
+  <!-- Mountain SVG background — bottom ¼ of slide -->
+  <svg style="position:absolute;bottom:0;left:0;width:100%;height:26%;pointer-events:none;z-index:1" viewBox="0 0 1920 580" preserveAspectRatio="xMidYMax meet">
     <defs>
       <radialGradient id="peakGlow" cx="50%" cy="0%" r="40%">
         <stop offset="0%" stop-color="#f7d97e" stop-opacity="0.25"/>
@@ -1126,64 +1202,48 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
     <path d="M0,580 L0,470 L320,370 L540,420 L720,340 L900,400 L1080,300 L1260,370 L1440,320 L1660,380 L1920,345 L1920,580 Z" fill="#2a0808" opacity="0.95"/>
     <!-- Gold glow at summit -->
     <ellipse cx="960" cy="80" rx="320" ry="80" fill="url(#peakGlow)"/>
-    <!-- Dotted paths up mountain -->
-    <path d="M620,580 Q720,440 820,320 Q880,250 960,80" fill="none" stroke="#c8941a" stroke-width="2.5" stroke-dasharray="10,7" opacity="0.45"/>
-    <path d="M1300,580 Q1230,440 1140,320 Q1080,250 960,80" fill="none" stroke="#c8941a" stroke-width="2.5" stroke-dasharray="10,7" opacity="0.45"/>
     <!-- Summit sparkles -->
     <circle cx="960" cy="78" r="5" fill="#f7d97e" opacity="0.9"/>
     <circle cx="930" cy="64" r="3" fill="#f7d97e" opacity="0.7"/>
     <circle cx="990" cy="62" r="3" fill="#f7d97e" opacity="0.7"/>
-    <circle cx="910" cy="80" r="2.5" fill="#f7d97e" opacity="0.5"/>
-    <circle cx="1010" cy="82" r="2.5" fill="#f7d97e" opacity="0.5"/>
-    <!-- 领航山 label -->
-    <text x="960" y="52" text-anchor="middle" font-size="22" fill="#f7d97e" opacity="0.7" font-family="STKaiti,serif" letter-spacing="6">领 航 山</text>
+    <!-- 领航山 label — bottom center of mountain -->
+    <text x="960" y="548" text-anchor="middle" font-size="42" fill="#f7d97e" opacity="0.9" font-family="STKaiti,serif" letter-spacing="10">领 航 山</text>
   </svg>
 
   <!-- Climbing cats container -->
   <div id="climbing-cats" style="position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden"></div>
 
-  <!-- Two cats climbing from mountain base to summit -->
-  <img id="summit-cat-token" class="summit-climbing-cat" src="assets/cats/token.png" alt="Token猫">
-  <img id="summit-cat-title" class="summit-climbing-cat" src="assets/cats/title.png" alt="Title猫">
+  <!-- Two cats enter from left/right sides -->
+  <img id="summit-cat-token" class="summit-climbing-cat climbing-token" src="assets/cats/token.png" alt="Token猫">
+  <img id="summit-cat-title" class="summit-climbing-cat climbing-title" src="assets/cats/title.png" alt="Title猫">
 
-  <!-- Mentor watchers at top -->
+  <!-- Mentor watchers — no names -->
   <div class="mentor-watcher-row" id="mentor-watchers" style="opacity:0;transition:opacity 0.6s">
-    <div class="mentor-watcher">
-      <img src="assets/mentors/培基.png" alt="培基道长">
-      <div class="mentor-watcher-name">培基道长</div>
-    </div>
-    <div class="mentor-watcher">
-      <img src="assets/mentors/夏淳.png" alt="夏淳道长">
-      <div class="mentor-watcher-name">夏淳道长</div>
-    </div>
-    <div class="mentor-watcher">
-      <img src="assets/mentors/胜华.png" alt="胜华道长">
-      <div class="mentor-watcher-name">胜华道长</div>
-    </div>
-    <div class="mentor-watcher">
-      <img src="assets/mentors/Yvonne.png" alt="Yvonne道长">
-      <div class="mentor-watcher-name">Yvonne 道长</div>
-    </div>
+    <div class="mentor-watcher"><img src="assets/mentors/培基.png" alt="培基道长"></div>
+    <div class="mentor-watcher"><img src="assets/mentors/夏淳.png" alt="夏淳道长"></div>
+    <div class="mentor-watcher"><img src="assets/mentors/胜华.png" alt="胜华道长"></div>
+    <div class="mentor-watcher"><img src="assets/mentors/Yvonne.png" alt="Yvonne道长"></div>
   </div>
 
   <!-- Central content -->
-  <div style="position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:50px">
-    <div class="s10-title" id="s10-title">终 极 开 富 符</div>
+  <div style="position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:10px">
+    <img id="s10-title" src="assets/s10_title.png" alt="终极开富符"
+         style="height:160px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(247,217,126,0.8)) drop-shadow(4px 4px 0 rgba(160,24,24,0.6));animation:s10In 0.9s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;opacity:0">
 
     <div class="s10-wealth">
       <div class="s10-wcol b" id="s10-wcol-b">
         <h4>经济财富</h4>
-        <p>职业选择权 · 投资认知<br/>看懂再下注 · 等待复利</p>
+        <p>领域慎选择，投资有认知!</p>
       </div>
       <div class="s10-wcol r" id="s10-wcol-r">
         <h4>精神财富</h4>
-        <p>组织视角 · AI 黑领<br/>高维判断 · 信任资本</p>
+        <p>利他扩视角，锚定探未来!</p>
       </div>
     </div>
 
     <div class="s10-impact">符见效了 · 1 跳槽 · 2 转岗 · 1 扩 scope · 2 面试中</div>
 
-    <div class="s10-finale" id="s10-finale">真 正 的 一 夜 暴 富 · 是 长 出 判 断 力</div>
+    <div class="s10-finale" id="s10-finale">从此猫们不再 E 夜求暴富，<br>而是带符求取漫漫幸福长路！</div>
   </div>
 
   <!-- 点火 launch bar -->
@@ -1210,7 +1270,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
 
     <div class="qr11-wrap" style="width:100%;height:100%;justify-content:center">
       <div class="qr11-headline" id="qr11-headline">
-        扫码 · 抽你本命开富符
+        此次开坛大典，幸得道友满座！
       </div>
 
       <div class="p-gold-divider"></div>
@@ -1242,12 +1302,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:#f0ddb4;font-family:
       <div class="p-gold-divider"></div>
 
       <div class="qr11-sub" id="qr11-sub">
-        座位书签就是终极开富符 · 带回家 · 分享微信群
+        为表同门诚意，特献本命财符！<br>扫码抽符分享，与君共同致富！
       </div>
       <div class="qr11-vote" id="qr11-vote">请给 E 夜暴富投票 ★</div>
-      <div class="qr11-finale" id="qr11-finale">
-        此符不保 E 夜暴富 · 但保长期财富！
-      </div>
     </div>
   </div>
 </section>
@@ -1488,8 +1545,8 @@ function makeCat(scheme) {
 // ===== SLIDE 2: Build cat grid =====
 const teamMembers = [
   {name:'陈清源',en:'Luna Chen',role:'助教',img:'Luna Chen陈清源.png',fc:'#c8941a'},
-  {name:'孙炜禛',en:'Abby Sun',role:'助教',img:'Jenny Jiang姜尚君.png',fc:'#c8941a'},
-  {name:'姜尚君',en:'Jenny Jiang',role:'小组长',img:'Abby Sun孙炜禛.png',fc:'#a01818'},
+  {name:'孙炜禛',en:'Abby Sun',role:'小组长',img:'Abby Sun孙炜禛.png',fc:'#a01818'},
+  {name:'姜尚君',en:'Jenny Jiang',role:'组员',img:'Jenny Jiang姜尚君.png',fc:'#4a2c1a'},
   {name:'任虎刚',en:'Hugang Ren',role:'组员',img:'Hugang Ren任虎刚.png',fc:'#4a2c1a'},
   {name:'蒋凡述',en:'Fanshu Jiang',role:'组员',img:'Fanshu Jiang蒋凡述.png',fc:'#4a2c1a'},
   {name:'杨康怡',en:'Victor Yang',role:'组员',img:'Victor Yang杨康怡.png',fc:'#4a2c1a'},
@@ -1533,7 +1590,7 @@ const mosaic = document.getElementById('mosaic-wrap');
 for(let i=0;i<12;i++){
   const div = document.createElement('div');
   div.className = 'grid66-item';
-  div.innerHTML = `<img src="assets/activities/a${i+1}.${photoExts[i]}" alt="${themes[i]}"><div class="grid66-caption">${themes[i]}</div>`;
+  div.innerHTML = `<img src="assets/activities/a${i+1}.${photoExts[i]}" alt="${themes[i]}">`;
   mosaic.appendChild(div);
 }
 
@@ -1815,7 +1872,7 @@ function onSlideEnter(i){
     const sf=document.getElementById('s10-finale');
     if(sf){
       sf.classList.remove('show'); sf.textContent='';
-      const finaleText='真 正 的 一 夜 暴 富 · 是 长 出 判 断 力';
+      const finaleText='从此猫们不再 E 夜求暴富，而是带符求取漫漫幸福长路！';
       setTimeout(()=>{
         sf.classList.add('show');
         [...finaleText].forEach((ch,ci)=>{
@@ -1839,19 +1896,20 @@ function onSlideEnter(i){
   } else if(i===11){
     sfx.bell();
     spawnS11Sparkles();
+    // Auto-play BGM
+    const bgm=document.getElementById('bgm');
+    if(bgm){ bgm.currentTime=0; bgm.play().catch(()=>{}); const btn=document.getElementById('bgm-toggle'); if(btn) btn.textContent='⏸'; }
     const h=document.getElementById('qr11-headline');
     const qw=document.getElementById('qr11-img-wrap');
     const sub=document.getElementById('qr11-sub');
     const vt=document.getElementById('qr11-vote');
-    const fn=document.getElementById('qr11-finale');
     const catl=document.getElementById('qr11-cat-l');
     const catr=document.getElementById('qr11-cat-r');
-    [h,qw,sub,vt,fn,catl,catr].forEach(el=>{ if(el){ el.classList.remove('show'); void el.offsetWidth; } });
+    [h,qw,sub,vt,catl,catr].forEach(el=>{ if(el){ el.classList.remove('show'); void el.offsetWidth; } });
     setTimeout(()=>{ if(h) h.classList.add('show'); },200);
     setTimeout(()=>{ if(qw) qw.classList.add('show'); if(catl) catl.classList.add('show'); if(catr) catr.classList.add('show'); sfx.levelup(); },700);
     setTimeout(()=>{ if(sub) sub.classList.add('show'); },1600);
-    setTimeout(()=>{ if(vt) vt.classList.add('show'); },2100);
-    setTimeout(()=>{ if(fn) fn.classList.add('show'); sfx.sfxConfetti(); fireConfetti(); },2900);
+    setTimeout(()=>{ if(vt) vt.classList.add('show'); sfx.sfxConfetti(); fireConfetti(); },2100);
   }
 }
 
@@ -1967,6 +2025,28 @@ sfxBtn.onclick=()=>{
   sfx.muted=!sfx.muted;
   sfxBtn.textContent=sfx.muted?'🔇':'🔊';
 };
+
+// BGM toggle
+const bgmBtn=document.getElementById('bgm-toggle');
+const bgmEl=document.getElementById('bgm');
+bgmBtn.onclick=()=>{
+  if(!bgmEl) return;
+  if(bgmEl.paused){ bgmEl.play().catch(()=>{}); bgmBtn.textContent='⏸'; }
+  else { bgmEl.pause(); bgmBtn.textContent='♪'; }
+};
+
+// Stop BGM when navigating away from slide 11
+const _origGoto=goto;
+goto=function(i){
+  if(bgmEl && cur===11 && i!==11){ bgmEl.pause(); bgmEl.currentTime=0; const btn=document.getElementById('bgm-toggle'); if(btn) btn.textContent='♪'; }
+  _origGoto(i);
+};
+
+// Split v3-scroll-inner text into individual char spans so flex distributes them evenly
+document.querySelectorAll('.v3-scroll-inner').forEach(el => {
+  const text = el.textContent.trim();
+  el.innerHTML = text.split('').map(ch => `<span>${ch}</span>`).join('');
+});
 
 // Init slide 0
 slides[0].classList.add('active');
